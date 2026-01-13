@@ -1,29 +1,21 @@
-import './App.css'
-
+import { createRootRoute, Outlet } from '@tanstack/react-router'
 import { AnimatePresence, motion } from 'framer-motion'
-import ProjectDetail, { Project } from './components/ProjectDetail'
 import { useEffect, useState } from 'react'
 
-import About from './components/About'
-import Clients from './components/Clients'
-import Contact from './components/Contact'
-import Experience from './components/Experience'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import Loader from './components/Loader'
-import Menu from './components/Menu'
-import Navigation from './components/Navigation'
-import Projects from './components/Projects'
-import Sidebar from './components/Sidebar'
-import Stats from './components/Stats'
-import TechStack from './components/TechStack'
+import Loader from '../components/Loader'
+import Menu from '../components/Menu'
+import Navigation from '../components/Navigation'
+import Sidebar from '../components/Sidebar'
 
-function App() {
+export const Route = createRootRoute({
+  component: RootComponent,
+})
+
+function RootComponent() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState('intro')
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   // Check system preference on mount
   useEffect(() => {
@@ -79,14 +71,6 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleProjectSelect = (project: Project) => {
-    setSelectedProject(project)
-  }
-
-  const handleProjectClose = () => {
-    setSelectedProject(null)
-  }
-
   return (
     <>
       <AnimatePresence>
@@ -107,64 +91,9 @@ function App() {
             {menuOpen && <Menu onClose={() => setMenuOpen(false)} />}
           </AnimatePresence>
 
-          {/* Project Detail Overlay */}
-          <AnimatePresence>
-            {selectedProject && (
-              <ProjectDetail 
-                project={selectedProject} 
-                onClose={handleProjectClose} 
-              />
-            )}
-          </AnimatePresence>
-          
-          <main className="main-content">
-            <Hero />
-            
-            <div className="section-divider" />
-            
-            <Clients />
-            
-            <div className="section-divider" />
-            
-            <section id="projects" className="projects-standalone">
-              <Projects onProjectSelect={handleProjectSelect} />
-            </section>
-            
-            <div className="section-divider" />
-            
-            <div className="content-grid">
-              <section className="grid-section experience-section">
-                <Experience />
-              </section>
-              
-              <section className="grid-section stats-section">
-                <Stats />
-              </section>
-            </div>
-            
-            <div className="section-divider" />
-            
-            <section id="about" className="about-standalone">
-              <div className="about-grid">
-                <About />
-                <TechStack />
-              </div>
-            </section>
-            
-            <div className="section-divider" />
-            
-            <section id="contact" className="contact-standalone">
-              <Contact />
-            </section>
-            
-            <div className="section-divider" />
-          </main>
-          
-          <Footer />
+          <Outlet />
         </motion.div>
       )}
     </>
   )
 }
-
-export default App

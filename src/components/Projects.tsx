@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from '@tanstack/react-router'
 import './Projects.css'
 import { Project } from './ProjectDetail'
 
@@ -201,11 +202,7 @@ const cardVariants = {
   },
 }
 
-interface ProjectsProps {
-  onProjectSelect: (project: Project) => void
-}
-
-export default function Projects({ onProjectSelect }: ProjectsProps) {
+export default function Projects() {
   return (
     <motion.div
       className="projects"
@@ -226,22 +223,18 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
         viewport={{ once: true, margin: "-50px" }}
       >
         {projects.map((project, index) => (
-          <motion.article
+          <Link
             key={project.id}
-            className="project-card"
-            variants={cardVariants}
-            whileHover={{ y: -8 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            onClick={() => onProjectSelect(project)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                onProjectSelect(project)
-              }
-            }}
+            to="/work/$projectId"
+            params={{ projectId: project.id }}
+            style={{ textDecoration: 'none', color: 'inherit' }}
           >
+            <motion.article
+              className="project-card"
+              variants={cardVariants}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
             <div 
               className="project-image"
               style={{ background: project.color }}
@@ -294,6 +287,7 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
 
             <div className="project-card-glow" />
           </motion.article>
+          </Link>
         ))}
       </motion.div>
     </motion.div>

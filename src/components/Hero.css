@@ -18,6 +18,8 @@
   width: 100%;
   position: relative;
   z-index: 1;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 @media (max-width: 968px) {
@@ -44,7 +46,7 @@
 
 .hero-label {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--text-muted);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -56,7 +58,7 @@
 
 @media (max-width: 480px) {
   .hero-label {
-    font-size: 0.6rem;
+    font-size: 1rem;
     margin-bottom: 1.5rem;
   }
 }
@@ -288,7 +290,7 @@
 }
 
 .hero-image-wrapper:hover .hero-image-glow {
-  opacity: 1;
+  opacity: 0;
 }
 
 .placeholder-text {

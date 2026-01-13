@@ -22,7 +22,7 @@
 }
 
 .footer-main:hover {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 @media (max-width: 768px) {
@@ -153,11 +153,12 @@
   gap: 0.75rem;
   padding: 2rem 3rem;
   border-right: 1px solid var(--border);
+  background: var(--bg-secondary);
   transition: background var(--transition-medium);
 }
 
 .footer-col:hover {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 .footer-col:last-child {
@@ -178,11 +179,42 @@
 
 .footer-col-end {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.footer-col-end .col-title {
+  margin-bottom: 0.25rem;
+}
+
+.footer-col-end .footer-icon-link {
+  margin-top: 0;
+}
+
+.footer-col-end {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-col-end .col-title {
+  width: 100%;
+}
+
+.footer-col-end .footer-icon-link {
+  margin-right: 0.5rem;
+}
+
+.footer-col-end .footer-icon-link:last-child {
+  margin-right: 0;
 }
 
 .col-title {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 1rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -233,6 +265,37 @@
   width: 4px;
 }
 
+.footer-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border);
+  transition: all var(--transition-medium);
+}
+
+.footer-icon-link:hover {
+  padding-left: 0;
+  background: transparent;
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.footer-icon-link::before {
+  display: none;
+}
+
+.footer-icon-link svg {
+  transition: transform var(--transition-medium);
+}
+
+.footer-icon-link:hover svg {
+  transform: scale(1.1);
+}
+
 .back-top {
   display: flex;
   align-items: center;
@@ -248,7 +311,7 @@
 }
 
 .back-top:hover {
-  background: var(--text-primary);
+  background: transparent;
   color: var(--bg-primary);
   border-color: var(--text-primary);
 }

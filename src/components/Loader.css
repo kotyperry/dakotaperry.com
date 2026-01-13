@@ -47,7 +47,7 @@
 
 .loader-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.2em;
   color: var(--text-muted);
   text-transform: uppercase;

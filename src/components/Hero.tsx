@@ -15,8 +15,8 @@ const letterVariants = {
 }
 
 export default function Hero() {
-  const line1 = "You've got a business."
-  const line2 = "Let's make it badass."
+  const line1 = "Growing businesses."
+  const line2 = "Powered by AI."
 
   return (
     <section id="intro" className="hero">

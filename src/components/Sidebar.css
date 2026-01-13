@@ -40,7 +40,7 @@
 
 .sidebar-link {
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -91,7 +91,7 @@
 }
 
 .theme-toggle:hover::before {
-  transform: scale(2);
+  transform: scale(0);
 }
 
 .theme-toggle:active {

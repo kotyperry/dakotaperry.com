@@ -20,7 +20,7 @@
 }
 
 .exp-item:hover {
-  background: var(--accent-glow);
+  background: transparent;
   margin-left: -0.5rem;
   padding-left: 0.5rem;
 }
@@ -62,7 +62,7 @@
 
 .exp-period {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
   min-width: 100px;
 }

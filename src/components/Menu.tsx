@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import './Menu.css'
 
 interface MenuProps {
@@ -95,9 +96,12 @@ export default function Menu({ onClose }: MenuProps) {
 
       <motion.div className="menu-footer" variants={itemVariants}>
         <div className="menu-socials">
-          <a href="https://github.com/dakotaperry" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://linkedin.com/in/dakotaperry" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://twitter.com/dakotaperry" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://github.com/dakotaperry" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com/in/dakotaperry" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <FaLinkedin />
+          </a>
         </div>
       </motion.div>
     </motion.div>

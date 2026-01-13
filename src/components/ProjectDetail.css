@@ -1,4 +1,4 @@
-/* Project Detail - Full Screen Takeover */
+/* Project Detail - Full Screen Takeover (legacy overlay mode) */
 .project-detail-overlay {
   position: fixed;
   inset: 0;
@@ -42,6 +42,15 @@
   border-radius: 2px;
 }
 
+/* Project Detail Page (routed mode) */
+.project-detail-page {
+  padding-top: 0;
+}
+
+.project-detail-page .project-detail-hero {
+  margin-top: 0;
+}
+
 /* Close Button */
 .project-detail-close {
   position: fixed;
@@ -61,7 +70,7 @@
 }
 
 .project-detail-close:hover {
-  background: var(--bg-elevated);
+  background: transparent;
   border-color: var(--border-light);
 }
 
@@ -158,7 +167,7 @@
 
 .info-label {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 1rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -185,7 +194,7 @@
 }
 
 .info-link:hover {
-  background: var(--text-primary);
+  background: transparent;
   color: var(--bg-primary);
   border-color: var(--text-primary);
 }
@@ -202,6 +211,8 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 6rem 4rem;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 @media (max-width: 768px) {
@@ -265,7 +276,7 @@
 .tech-tag:hover {
   color: var(--text-primary);
   border-color: var(--border-light);
-  background: var(--bg-elevated);
+  background: transparent;
 }
 
 /* Highlights List */
@@ -291,7 +302,7 @@
 
 .highlights-list li:hover {
   border-left-color: var(--text-muted);
-  background: var(--bg-elevated);
+  background: transparent;
 }
 
 .highlight-marker {
@@ -359,7 +370,7 @@
 }
 
 .media-image-wrapper:hover .media-overlay {
-  opacity: 1;
+  opacity: 0;
 }
 
 .media-video-wrapper {
@@ -423,7 +434,7 @@
 .footer-close:hover {
   color: var(--text-primary);
   border-color: var(--border-light);
-  background: var(--bg-elevated);
+  background: transparent;
 }
 
 /* Placeholder styling for empty media */

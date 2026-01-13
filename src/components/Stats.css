@@ -28,7 +28,7 @@
 }
 
 .stat:hover {
-  background: var(--accent-glow);
+  background: transparent;
 }
 
 .stat-value {
@@ -45,7 +45,7 @@
 
 .stat-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 1rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;

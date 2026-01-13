@@ -88,7 +88,7 @@
 
 .menu-link:hover {
   padding-left: 2rem;
-  background: linear-gradient(90deg, var(--accent-glow), transparent);
+  background: transparent;
 }
 
 .menu-link:hover::before {
@@ -124,9 +124,12 @@
 
 .menu-socials a {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
   transition: color var(--transition-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-socials a:hover {

@@ -19,7 +19,6 @@ function Counter({ value, suffix, inView }: { value: number; suffix: string; inV
   useEffect(() => {
     if (!inView) return
     
-    let start = 0
     const duration = 2000
     // Use easeOutExpo for premium feel
     const easeOutExpo = (t: number) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t)

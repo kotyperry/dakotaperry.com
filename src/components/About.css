@@ -46,7 +46,7 @@
 
 .value-num {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
   transition: color var(--transition-medium);
 }

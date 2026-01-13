@@ -42,7 +42,7 @@
 }
 
 .project-card:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .project-card-glow {
@@ -56,7 +56,7 @@
 }
 
 .project-card:hover .project-card-glow {
-  opacity: 1;
+  opacity: 0;
 }
 
 .project-image {
@@ -78,7 +78,7 @@
 }
 
 .project-card:hover .project-image-overlay {
-  opacity: 1;
+  opacity: 0;
 }
 
 .project-placeholder {
@@ -109,7 +109,7 @@
 
 .placeholder-text {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -131,7 +131,7 @@
 .project-category,
 .project-year {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -164,7 +164,7 @@
 
 .project-tech span {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--border);
@@ -174,12 +174,12 @@
 .project-tech span:hover {
   color: var(--text-secondary);
   border-color: var(--border-light);
-  background: var(--accent-glow);
+  background: transparent;
 }
 
 .tech-more {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--border);
@@ -195,7 +195,7 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);

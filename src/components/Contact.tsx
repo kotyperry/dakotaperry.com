@@ -72,9 +72,9 @@ export default function Contact() {
     >
       <div className="contact-header">
         <span className="section-label">Contact</span>
-        <h2 className="contact-title">Let's work together</h2>
+        <h2 className="contact-title">Ready to transform your business?</h2>
         <p className="contact-subtitle">
-          Have a project in mind? Fill out the form and I'll get back to you within 24 hours.
+          Let's discuss how AI and automation can create efficiency in your organization. Fill out the form and I'll get back to you within 24 hours.
         </p>
       </div>
 
@@ -159,7 +159,7 @@ export default function Contact() {
           className={`form-group ${focusedField === 'message' ? 'focused' : ''}`}
           variants={itemVariants}
         >
-          <label htmlFor="message">Project Details *</label>
+          <label htmlFor="message">How can I help? *</label>
           <textarea
             id="message"
             name="message"
@@ -169,7 +169,7 @@ export default function Contact() {
             onBlur={() => setFocusedField(null)}
             required
             rows={5}
-            placeholder="Tell me about your project, timeline, and goals..."
+            placeholder="Tell me about your business challenges, goals, and how AI could help you operate more efficiently..."
           />
           <span className="input-highlight" />
         </motion.div>

@@ -8,6 +8,7 @@
   padding: 5rem 3rem;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
+  background: var(--bg-secondary);
 }
 
 @media (max-width: 768px) {
@@ -24,6 +25,10 @@
   gap: 2rem;
 }
 
+.clients-header .section-label::after {
+  background: linear-gradient(90deg, var(--border-light), transparent);
+}
+
 @media (max-width: 768px) {
   .clients-header {
     flex-direction: column;
@@ -34,7 +39,7 @@
 .clients-subtext {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--text-primary);
   max-width: 300px;
   text-align: right;
 }
@@ -87,11 +92,11 @@
 }
 
 .client-logo:hover .client-hover-bg {
-  opacity: 1;
+  opacity: 0;
 }
 
 .client-logo:hover {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 .logo-text {

@@ -16,9 +16,9 @@ const valueVariants = {
 
 export default function About() {
   const values = [
-    { num: '01', text: 'Performance First' },
-    { num: '02', text: 'Clean Architecture' },
-    { num: '03', text: 'User-Centered' },
+    { num: '01', text: 'AI-Driven Solutions' },
+    { num: '02', text: 'Efficiency Optimized' },
+    { num: '03', text: 'Business Impact' },
   ]
 
   return (
@@ -38,7 +38,7 @@ export default function About() {
         viewport={{ once: true }}
         transition={{ delay: 0.1, duration: 0.6 }}
       >
-        I'm a self-taught developer who turned curiosity into craft.
+        I help businesses unlock AI potential and build unstoppable efficiency.
       </motion.h2>
       
       <motion.div 
@@ -49,12 +49,13 @@ export default function About() {
         transition={{ delay: 0.2, duration: 0.6 }}
       >
         <p>
-          Based in Tulsa, Oklahoma, I've spent the last 5+ years building 
-          digital experiences for startups, agencies, and Fortune 500 companies.
+          Based in Tulsa, Oklahoma, I've spent the last 5+ years helping businesses 
+          of all sizes integrate AI into their operations and boost productivity.
         </p>
         <p>
-          I believe great software is about more than just code—it's about 
-          understanding people and solving real problems with elegant solutions.
+          I specialize in custom AI solutions, automation, and digital transformation that 
+          drive real business results. From startups to Fortune 500 companies, I create 
+          systems that work smarter so your team can focus on what matters.
         </p>
       </motion.div>
 
