@@ -1,0 +1,111 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 50px;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+}
+
+@media (max-width: 968px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.sidebar-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  transition: opacity var(--transition-medium);
+}
+
+.sidebar-logo:hover {
+  opacity: 0.7;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-link {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 0.75rem 0.5rem;
+  transition: all var(--transition-medium);
+}
+
+.sidebar-link:hover {
+  color: var(--text-secondary);
+}
+
+.sidebar-link.active {
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-glow);
+  transform: scale(0);
+  border-radius: 50%;
+  transition: transform var(--transition-medium);
+}
+
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  transform: rotate(15deg);
+}
+
+.theme-toggle:hover::before {
+  transform: scale(2);
+}
+
+.theme-toggle:active {
+  transform: rotate(0deg) scale(0.95);
+}
+
+.theme-toggle svg {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition-medium);
+}
+
+.theme-toggle:hover svg {
+  transform: scale(1.1);
+}

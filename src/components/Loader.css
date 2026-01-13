@@ -1,0 +1,61 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.loader-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.loader-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.3em;
+  color: var(--text-primary);
+  display: flex;
+  overflow: hidden;
+}
+
+.loader-char {
+  display: inline-block;
+}
+
+.loader-bar {
+  width: 120px;
+  height: 2px;
+  background: var(--text-primary);
+  transform-origin: left;
+}
+
+.loader-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.loader-bg-effect {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}

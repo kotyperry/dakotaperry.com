@@ -1,0 +1,134 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-secondary);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  transform-origin: top center;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.menu-close {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: background var(--transition-medium);
+}
+
+.menu-close:hover {
+  background: var(--text-secondary);
+}
+
+.close-icon {
+  font-size: 0.8rem;
+}
+
+.menu-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: 2rem 0;
+}
+
+.menu-link {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--text-primary);
+  transform: scaleY(0);
+  transition: transform var(--transition-medium);
+}
+
+.menu-link:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.menu-link:hover {
+  padding-left: 2rem;
+  background: linear-gradient(90deg, var(--accent-glow), transparent);
+}
+
+.menu-link:hover::before {
+  transform: scaleY(1);
+}
+
+.link-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.link-label {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: var(--text-primary);
+  transition: color var(--transition-medium);
+}
+
+.menu-link:hover .link-label {
+  color: var(--text-secondary);
+}
+
+.menu-footer {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.menu-socials {
+  display: flex;
+  gap: 2rem;
+}
+
+.menu-socials a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: color var(--transition-medium);
+}
+
+.menu-socials a:hover {
+  color: var(--text-primary);
+}

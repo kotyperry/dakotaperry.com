@@ -1,0 +1,111 @@
+.clients {
+  background: var(--bg-primary);
+}
+
+.clients-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 3rem;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .clients-container {
+    padding: 3rem 2rem;
+  }
+}
+
+.clients-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .clients-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.clients-subtext {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 300px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .clients-subtext {
+    text-align: left;
+  }
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+@media (max-width: 968px) {
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.client-hover-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-glow);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  pointer-events: none;
+}
+
+.client-logo:hover .client-hover-bg {
+  opacity: 1;
+}
+
+.client-logo:hover {
+  background: var(--bg-secondary);
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  transition: all var(--transition-medium);
+  position: relative;
+  z-index: 1;
+}
+
+.client-logo:hover .logo-text {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,229 @@
+.projects {
+  width: 100%;
+}
+
+.projects-header {
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 968px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all var(--transition-medium);
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-glow);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  z-index: 0;
+}
+
+.project-card:hover {
+  border-color: var(--border-light);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.4);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card-glow {
+  position: absolute;
+  inset: -1px;
+  background: var(--accent-glow);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card:hover .project-card-glow {
+  opacity: 1;
+}
+
+.project-image {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+}
+
+.project-card:hover .project-image-overlay {
+  opacity: 1;
+}
+
+.project-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.3;
+  transition: all var(--transition-medium);
+  z-index: 1;
+}
+
+.project-card:hover .project-placeholder {
+  opacity: 0.5;
+  transform: scale(1.05);
+}
+
+.placeholder-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--text-primary);
+  transition: all var(--transition-medium);
+}
+
+.project-card:hover .placeholder-num {
+  transform: translateY(-4px);
+}
+
+.placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all var(--transition-medium);
+}
+
+.project-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.project-category,
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  transition: transform var(--transition-medium);
+}
+
+.project-card:hover .project-title {
+  transform: translateX(4px);
+}
+
+.project-description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tech span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  transition: all var(--transition-medium);
+}
+
+.project-tech span:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-light);
+  background: var(--accent-glow);
+}
+
+.tech-more {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  opacity: 0.7;
+}
+
+/* Card CTA */
+.project-card-cta {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--transition-medium);
+  z-index: 2;
+}
+
+.project-card:hover .project-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card-cta svg {
+  transition: transform var(--transition-medium);
+}
+
+.project-card:hover .project-card-cta svg {
+  transform: translate(2px, -2px);
+}
+
+/* Clickable card cursor */
+.project-card {
+  cursor: pointer;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 4px;
+}
