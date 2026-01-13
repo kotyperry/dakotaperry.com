@@ -1,6 +1,8 @@
-import { motion } from 'framer-motion'
-import { useEffect, useRef, useCallback } from 'react'
 import './Footer.css'
+
+import { useCallback, useEffect, useRef, useState } from 'react'
+
+import { motion } from 'framer-motion'
 
 const linkVariants = {
   hidden: { opacity: 0, x: -10 },
@@ -19,6 +21,19 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const mainRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
+  const [skewDirection, setSkewDirection] = useState<'left' | 'right' | null>(null)
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!mainRef.current) return
+    const rect = mainRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const midpoint = rect.width / 2
+    setSkewDirection(x < midpoint ? 'left' : 'right')
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    setSkewDirection(null)
+  }, [])
 
   const resizeText = useCallback(() => {
     if (!mainRef.current || !textRef.current) return
@@ -109,15 +124,6 @@ export default function Footer() {
                 {social.name}
               </motion.a>
             ))}
-            <motion.a 
-              href="#intro" 
-              className="back-top"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Back to top</span>
-              <span className="top-arrow">↑</span>
-            </motion.a>
           </div>
         </motion.div>
 
@@ -128,10 +134,13 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
           <motion.h2 
             ref={textRef}
             className="footer-headline"
+            data-skew={skewDirection}
           >
             YOUR MOVE
           </motion.h2>
