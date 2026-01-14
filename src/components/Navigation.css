@@ -77,6 +77,14 @@
   letter-spacing: 0.05em;
   padding: 0.5rem 1rem;
   border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+}
+
+.nav-status:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  transform: translateY(-2px);
 }
 
 .status-dot {

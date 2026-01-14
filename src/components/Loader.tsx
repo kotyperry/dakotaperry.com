@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
 import './Loader.css'
+
+import { motion } from 'framer-motion'
 
 const letterVariants = {
   hidden: { y: 20, opacity: 0 },
@@ -63,7 +64,7 @@ export default function Loader() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.4 }}
           >
-            Developer & Designer
+            AI Engineer
           </motion.span>
         </motion.div>
       </div>

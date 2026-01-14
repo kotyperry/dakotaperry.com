@@ -80,6 +80,7 @@ function WorkDetailComponent() {
       <main className="main-content project-detail-page">
         {/* Hero Section */}
         <motion.div 
+          id="hero"
           className="project-detail-hero"
           style={{ background: project.color }}
           initial={{ opacity: 0 }}
@@ -107,6 +108,7 @@ function WorkDetailComponent() {
 
         {/* Project Info Bar */}
         <motion.div 
+          id="info"
           className="project-info-bar"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,6 +151,7 @@ function WorkDetailComponent() {
         <div className="project-detail-content">
           {/* Full Description */}
           <motion.section 
+            id="overview"
             className="content-section"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -161,6 +164,7 @@ function WorkDetailComponent() {
 
           {/* Tech Stack */}
           <motion.section 
+            id="tech"
             className="content-section"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,6 +192,7 @@ function WorkDetailComponent() {
           {/* Highlights */}
           {project.highlights.length > 0 && (
             <motion.section 
+              id="highlights"
               className="content-section"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -215,6 +220,7 @@ function WorkDetailComponent() {
           {/* Media Gallery */}
           {project.media.length > 0 && (
             <motion.section 
+              id="gallery"
               className="content-section media-section"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

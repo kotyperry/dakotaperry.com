@@ -248,7 +248,7 @@
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 2rem;
   display: flex;
   align-items: center;

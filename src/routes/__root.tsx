@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { Outlet, createRootRoute, useLocation } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
 import Loader from '../components/Loader'
@@ -12,6 +12,7 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
+  const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState('intro')
@@ -52,7 +53,11 @@ function RootComponent() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['intro', 'projects', 'about', 'contact']
+      const isWorkPage = location.pathname.startsWith('/work/')
+      const sections = isWorkPage 
+        ? ['hero', 'overview', 'tech', 'highlights', 'gallery']
+        : ['intro', 'projects', 'about', 'contact']
+      
       const scrollPosition = window.scrollY + window.innerHeight / 3
 
       for (const section of sections) {
@@ -67,9 +72,18 @@ function RootComponent() {
       }
     }
 
+    // Initial call to set active section
+    handleScroll()
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [location.pathname])
+
+  // Reset active section when navigating between pages
+  useEffect(() => {
+    const isWorkPage = location.pathname.startsWith('/work/')
+    setActiveSection(isWorkPage ? 'hero' : 'intro')
+  }, [location.pathname])
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useLocation, useNavigate } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
 import './Sidebar.css'
 
 interface SidebarProps {
@@ -8,16 +9,42 @@ interface SidebarProps {
   toggleTheme: () => void
 }
 
-const sections = [
+const homeSections = [
   { id: 'intro', label: 'Home' },
   { id: 'projects', label: 'Work' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ]
 
+const workSections = [
+  { id: 'hero', label: 'Hero' },
+  { id: 'overview', label: 'Overview' },
+  { id: 'tech', label: 'Tech' },
+  { id: 'highlights', label: 'Highlights' },
+  { id: 'gallery', label: 'Gallery' },
+]
+
 export default function Sidebar({ activeSection, theme, toggleTheme }: SidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
+  const [availableSections, setAvailableSections] = useState(homeSections)
+
+  const isWorkPage = location.pathname.startsWith('/work/')
+
+  // Filter sections based on what exists in the DOM
+  useEffect(() => {
+    if (isWorkPage) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const existingSections = workSections.filter(section => 
+          document.getElementById(section.id) !== null
+        )
+        setAvailableSections(existingSections)
+      }, 100)
+    } else {
+      setAvailableSections(homeSections)
+    }
+  }, [isWorkPage, location.pathname])
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -27,6 +54,14 @@ export default function Sidebar({ activeSection, theme, toggleTheme }: SidebarPr
     } else {
       // Navigate to homepage
       navigate({ to: '/' })
+    }
+  }
+
+  const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault()
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
   }
 
@@ -40,10 +75,11 @@ export default function Sidebar({ activeSection, theme, toggleTheme }: SidebarPr
       <a href="/" onClick={handleLogoClick} className="sidebar-logo">DP</a>
       
       <nav className="sidebar-nav">
-        {sections.map((section) => (
+        {availableSections.map((section) => (
           <a
             key={section.id}
             href={`#${section.id}`}
+            onClick={(e) => handleSectionClick(e, section.id)}
             className={`sidebar-link ${activeSection === section.id ? 'active' : ''}`}
           >
             {section.label}

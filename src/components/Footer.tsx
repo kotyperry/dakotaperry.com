@@ -35,6 +35,14 @@ export default function Footer() {
     setSkewDirection(null)
   }, [])
 
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault()
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }, [])
+
   const resizeText = useCallback(() => {
     if (!mainRef.current || !textRef.current) return
     
@@ -86,20 +94,24 @@ export default function Footer() {
           
           <div className="footer-col">
             <span className="col-title">Navigate</span>
-            {['Home', 'About', 'Work', 'Contact'].map((item, i) => (
-              <motion.a 
-                key={item}
-                href={`#${item === 'Home' ? 'intro' : item === 'Work' ? 'projects' : item.toLowerCase()}`} 
-                className="footer-link"
-                custom={i}
-                variants={linkVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {item}
-              </motion.a>
-            ))}
+            {['Home', 'About', 'Work', 'Contact'].map((item, i) => {
+              const sectionId = item === 'Home' ? 'intro' : item === 'Work' ? 'projects' : item.toLowerCase()
+              return (
+                <motion.a 
+                  key={item}
+                  href={`#${sectionId}`}
+                  onClick={(e) => handleNavClick(e, sectionId)}
+                  className="footer-link"
+                  custom={i}
+                  variants={linkVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  {item}
+                </motion.a>
+              )
+            })}
           </div>
           
           <div className="footer-col footer-col-end">

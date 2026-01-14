@@ -26,6 +26,34 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
     navigate({ to: '/' })
   }
 
+  const handleAvailableClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    if (isWorkPage) {
+      // If on a work page, navigate to home first then scroll
+      navigate({ to: '/' })
+      setTimeout(() => {
+        const element = document.getElementById('contact')
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    } else {
+      // If on home page, just scroll to contact
+      const element = document.getElementById('contact')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }
+  }
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const element = document.getElementById('intro')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
   return (
     <motion.header
       className={`navigation ${scrolled ? 'scrolled' : ''}`}
@@ -34,14 +62,14 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
       transition={{ delay: 0.2, duration: 0.5 }}
     >
       <div className="nav-left">
-        <a href="#intro" className="nav-logo">DP</a>
+        <a href="#intro" onClick={handleLogoClick} className="nav-logo">DP</a>
       </div>
 
       <div className="nav-center">
-        <span className="nav-status">
+        <a href="#contact" onClick={handleAvailableClick} className="nav-status">
           <span className="status-dot" />
           AVAILABLE FOR PROJECTS
-        </span>
+        </a>
       </div>
 
       <div className="nav-right">

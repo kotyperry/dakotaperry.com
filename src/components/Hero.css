@@ -68,25 +68,14 @@
   height: 6px;
   background: var(--text-muted);
   border-radius: 50%;
-  animation: gentlePulse 2s ease-in-out infinite;
-}
-
-@keyframes gentlePulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.8);
-  }
 }
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 6vw, 5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
   margin-bottom: 3rem;
   display: flex;
@@ -96,22 +85,23 @@
 
 @media (max-width: 968px) {
   .hero-headline {
-    font-size: clamp(1.8rem, 8vw, 3rem);
-    line-height: 1.1;
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    line-height: 1;
     margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero-headline {
-    font-size: clamp(1.5rem, 9vw, 2.5rem);
-    line-height: 1.15;
+    font-size: clamp(2rem, 11vw, 3.5rem);
+    line-height: 1.05;
   }
 }
 
 .headline-line {
   display: block;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .headline-char {
@@ -204,7 +194,6 @@
   padding: 1rem 0;
   position: relative;
   transition: color var(--transition-medium);
-  overflow: hidden;
 }
 
 .cta-secondary span {
@@ -318,16 +307,4 @@
   width: 1px;
   height: 60px;
   background: linear-gradient(to bottom, var(--border-light), transparent);
-  animation: lineGrow 1s var(--ease-out-expo) forwards;
-}
-
-@keyframes lineGrow {
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: 60px;
-    opacity: 1;
-  }
 }
