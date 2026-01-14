@@ -11,6 +11,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <script>
+      (function () {
+        const redirect = sessionStorage.getItem('spa-redirect')
+        if (redirect) {
+          sessionStorage.removeItem('spa-redirect')
+          if (redirect !== window.location.href) {
+            const url = new URL(redirect)
+            window.history.replaceState(null, '', url.pathname + url.search + url.hash)
+          }
+        }
+      })()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
