@@ -1,5 +1,5 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Outlet, createRootRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
 import Loader from '../components/Loader'

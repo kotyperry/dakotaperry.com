@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useLocation, useNavigate } from '@tanstack/react-router'
 import './Sidebar.css'
 
 interface SidebarProps {
@@ -15,6 +16,20 @@ const sections = [
 ]
 
 export default function Sidebar({ activeSection, theme, toggleTheme }: SidebarProps) {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      // If already on homepage, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      // Navigate to homepage
+      navigate({ to: '/' })
+    }
+  }
+
   return (
     <motion.aside 
       className="sidebar"
@@ -22,7 +37,7 @@ export default function Sidebar({ activeSection, theme, toggleTheme }: SidebarPr
       animate={{ opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.5 }}
     >
-      <a href="#intro" className="sidebar-logo">DP</a>
+      <a href="/" onClick={handleLogoClick} className="sidebar-logo">DP</a>
       
       <nav className="sidebar-nav">
         {sections.map((section) => (

@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import './Navigation.css'
+
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from '@tanstack/react-router'
+
+import { motion } from 'framer-motion'
 
 interface NavigationProps {
   onMenuClick: () => void
@@ -8,12 +11,20 @@ interface NavigationProps {
 
 export default function Navigation({ onMenuClick }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  
+  const isWorkPage = location.pathname.startsWith('/work/')
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleClose = () => {
+    navigate({ to: '/' })
+  }
 
   return (
     <motion.header
@@ -29,18 +40,33 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
       <div className="nav-center">
         <span className="nav-status">
           <span className="status-dot" />
-          Available for projects
+          AVAILABLE FOR PROJECTS
         </span>
       </div>
 
       <div className="nav-right">
-        <button className="menu-btn" onClick={onMenuClick}>
-          <span className="menu-lines">
-            <span />
-            <span />
-          </span>
-          Menu
-        </button>
+        {isWorkPage ? (
+          <motion.button 
+            className="close-btn" 
+            onClick={handleClose}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            Close
+          </motion.button>
+        ) : (
+          <button className="menu-btn" onClick={onMenuClick}>
+            <span className="menu-lines">
+              <span />
+              <span />
+            </span>
+            Menu
+          </button>
+        )}
       </div>
     </motion.header>
   )

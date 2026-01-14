@@ -1,11 +1,12 @@
+import '../../components/ProjectDetail.css'
+
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { motion } from 'framer-motion'
-import { useEffect } from 'react'
 
 import Footer from '../../components/Footer'
-import { projects } from '../../components/Projects'
 import type { Project } from '../../components/ProjectDetail'
-import '../../components/ProjectDetail.css'
+import { motion } from 'framer-motion'
+import { projects } from '../../components/Projects'
+import { useEffect } from 'react'
 
 export const Route = createFileRoute('/work/$projectId')({
   component: WorkDetailComponent,
@@ -74,29 +75,9 @@ function WorkDetailComponent() {
     )
   }
 
-  const handleClose = () => {
-    navigate({ to: '/' })
-  }
-
   return (
     <>
       <main className="main-content project-detail-page">
-        {/* Close Button */}
-        <motion.button
-          className="project-detail-close"
-          onClick={handleClose}
-          whileHover={{ scale: 1.1, rotate: 90 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, rotate: -90 }}
-          animate={{ opacity: 1, rotate: 0 }}
-          transition={{ delay: 0.4, duration: 0.4 }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </motion.button>
-
         {/* Hero Section */}
         <motion.div 
           className="project-detail-hero"
@@ -272,9 +253,6 @@ function WorkDetailComponent() {
                         </video>
                       </div>
                     )}
-                    {item.caption && (
-                      <p className="media-caption">{item.caption}</p>
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -282,21 +260,6 @@ function WorkDetailComponent() {
           )}
         </div>
 
-        {/* Footer Navigation */}
-        <motion.div 
-          className="project-detail-footer"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <button className="footer-close" onClick={handleClose}>
-            <span>Close Project</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </motion.div>
       </main>
       
       <Footer />

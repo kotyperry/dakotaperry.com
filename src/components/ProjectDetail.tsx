@@ -311,9 +311,6 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                           </video>
                         </div>
                       )}
-                      {item.caption && (
-                        <p className="media-caption">{item.caption}</p>
-                      )}
                     </motion.div>
                   ))}
                 </div>
