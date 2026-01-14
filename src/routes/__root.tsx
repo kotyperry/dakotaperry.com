@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react'
 import Loader from '../components/Loader'
 import Menu from '../components/Menu'
 import Navigation from '../components/Navigation'
+import NotFound from '../components/NotFound'
 import Sidebar from '../components/Sidebar'
 import UnderConstruction from '../components/UnderConstruction'
 
 export const Route = createRootRoute({
   component: RootComponent,
+  notFoundComponent: NotFound,
 })
 
 function RootComponent() {
