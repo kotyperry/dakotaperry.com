@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import Menu from '../components/Menu'
 import Navigation from '../components/Navigation'
 import Sidebar from '../components/Sidebar'
+import UnderConstruction from '../components/UnderConstruction'
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -86,7 +87,7 @@ function RootComponent() {
   }, [location.pathname])
 
   return (
-    <>
+    <UnderConstruction>
       <AnimatePresence>
         {loading && <Loader />}
       </AnimatePresence>
@@ -108,6 +109,6 @@ function RootComponent() {
           <Outlet />
         </motion.div>
       )}
-    </>
+    </UnderConstruction>
   )
 }
