@@ -91,14 +91,16 @@ export default function UnderConstruction({
               }}
             >
               <div className="form-group">
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
-                  className={`construction-input ${error ? "input-error" : ""}`}
-                  autoFocus
-                />
+                <label className="input-label">
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter password"
+                    className={`construction-input ${error ? "input-error" : ""}`}
+                    autoFocus
+                  />
+                </label>
                 <button type="submit" className="construction-button">
                   <span>Enter</span>
                   <span className="button-arrow">→</span>

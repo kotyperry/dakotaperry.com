@@ -15,14 +15,9 @@
   align-items: flex-end;
   padding: 3rem 3rem 0;
   border-top: 1px solid var(--border);
-  transition: background var(--transition-medium);
   overflow: hidden;
   position: relative;
   min-height: 200px;
-}
-
-.footer-main:hover {
-  background: transparent;
 }
 
 @media (max-width: 768px) {
@@ -154,11 +149,6 @@
   padding: 2rem 3rem;
   border-right: 1px solid var(--border);
   background: var(--bg-secondary);
-  transition: background var(--transition-medium);
-}
-
-.footer-col:hover {
-  background: transparent;
 }
 
 .footer-col:last-child {

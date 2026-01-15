@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from '@tanstack/react-router'
 
 import { motion } from 'framer-motion'
+import { op } from '../openpanel'
 
 interface NavigationProps {
   onMenuClick: () => void
@@ -28,6 +29,7 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
 
   const handleAvailableClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
+    op.track('available_for_work_click', { from_page: isWorkPage ? 'work_detail' : 'home' })
     if (isWorkPage) {
       // If on a work page, navigate to home first then scroll
       navigate({ to: '/' })
