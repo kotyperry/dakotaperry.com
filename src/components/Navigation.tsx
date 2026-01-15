@@ -29,7 +29,7 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
 
   const handleAvailableClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    op.track('available_for_work_click', { from_page: isWorkPage ? 'work_detail' : 'home' })
+    op.track('Available For Work Click', { from_page: isWorkPage ? 'Work Detail' : 'Home' })
     if (isWorkPage) {
       // If on a work page, navigate to home first then scroll
       navigate({ to: '/' })

@@ -4,7 +4,7 @@ import { op } from '../openpanel'
 export default function Hero() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string, buttonName: string) => {
     e.preventDefault()
-    op.track('hero_cta_click', { button: buttonName, destination: sectionId })
+    op.track('Hero CTA Click', { button: buttonName, destination: sectionId })
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -33,11 +33,11 @@ export default function Hero() {
           </h1>
 
           <div className="hero-cta">
-            <a href="#projects" onClick={(e) => handleClick(e, 'projects', 'see_my_work')} className="cta-primary">
+            <a href="#projects" onClick={(e) => handleClick(e, 'projects', 'See My Work')} className="cta-primary">
               <span>See my work</span>
               <span className="cta-arrow">→</span>
             </a>
-            <a href="#contact" onClick={(e) => handleClick(e, 'contact', 'lets_talk')} className="cta-secondary">
+            <a href="#contact" onClick={(e) => handleClick(e, 'contact', 'Lets Talk')} className="cta-secondary">
               <span>Let's talk</span>
             </a>
           </div>
