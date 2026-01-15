@@ -96,10 +96,10 @@ export default function Menu({ onClose }: MenuProps) {
 
       <motion.div className="menu-footer" variants={itemVariants}>
         <div className="menu-socials">
-          <a href="https://github.com/dakotaperry" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <a href="https://github.com/kotyperry" target="_blank" rel="noopener noreferrer" title="GitHub">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/dakotaperry" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/koty-perry/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
             <FaLinkedin />
           </a>
         </div>

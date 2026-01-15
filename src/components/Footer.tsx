@@ -118,7 +118,7 @@ export default function Footer() {
           <div className="footer-col footer-col-end">
             <span className="col-title">Connect</span>
             <motion.a 
-              href="https://github.com/dakotaperry" 
+              href="https://github.com/kotyperry" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="footer-link footer-icon-link"
@@ -135,7 +135,7 @@ export default function Footer() {
               </svg>
             </motion.a>
             <motion.a 
-              href="https://linkedin.com/in/dakotaperry" 
+              href="https://www.linkedin.com/in/koty-perry/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="footer-link footer-icon-link"
