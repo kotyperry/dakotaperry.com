@@ -2,7 +2,7 @@ import { OpenPanel } from "@openpanel/web";
 
 export const op = new OpenPanel({
   apiUrl: "https://api.blkdog.dev",
-  clientId: "368d49f1-4272-479e-ab82-c39efae48f0b",
+  clientId: "1adbccb0-6ea5-461d-af68-05c3f7b9b749",
   trackScreenViews: true,
   trackOutgoingLinks: true,
   trackAttributes: true,
