@@ -39,6 +39,7 @@
   transition: transform 0.15s ease;
   transform-origin: bottom center;
   position: relative;
+  text-shadow: var(--headline-glow);
 }
 
 /* Left side hover - negative skew (leans right like italic) */
