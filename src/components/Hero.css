@@ -81,6 +81,7 @@
   display: flex;
   flex-direction: column;
   text-transform: uppercase;
+  text-shadow: var(--headline-glow);
 }
 
 @media (max-width: 968px) {
