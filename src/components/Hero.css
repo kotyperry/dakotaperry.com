@@ -33,7 +33,7 @@
 @media (max-width: 480px) {
   .hero-layout {
     gap: 2rem;
-    padding: 5rem 1rem 2rem;
+    padding: 7rem 1rem 2rem;
   }
 }
 
@@ -203,45 +203,56 @@
 }
 
 .cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 1rem 0;
+  padding: 1rem 1.75rem;
   position: relative;
-  transition: color var(--transition-medium);
+  transition: all var(--transition-medium);
+  border: 1px solid var(--accent-orange);
+  background: transparent;
 }
 
 .cta-secondary span {
   display: inline-block;
   transition: transform var(--transition-medium);
+  position: relative;
+  z-index: 1;
+}
+
+.cta-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium);
+  z-index: 0;
+}
+
+.cta-secondary:hover::before {
+  transform: scaleX(1);
 }
 
 .cta-secondary:hover span {
-  transform: translateX(4px);
+  color: var(--bg-primary);
 }
 
-.cta-secondary::after {
-  content: '';
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--accent-orange);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--transition-medium);
+.cta-secondary:hover .cta-arrow {
+  transform: translateX(4px);
+  color: var(--bg-primary);
 }
 
 .cta-secondary:hover {
-  color: var(--text-primary);
-}
-
-.cta-secondary:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(255, 111, 15, 0.4);
+  gap: 1rem;
 }
 
 /* Right column */
