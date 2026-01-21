@@ -37,12 +37,9 @@ export default function Hero() {
           </p>
 
           <div className="hero-cta">
-            <a href="#projects" onClick={(e) => handleClick(e, 'projects', 'See My Work')} className="cta-primary">
-              <span>See my work</span>
-              <span className="cta-arrow">→</span>
-            </a>
             <a href="#contact" onClick={(e) => handleClick(e, 'contact', 'Lets Talk')} className="cta-secondary">
               <span>Let's talk</span>
+              <span className="cta-arrow">→</span>
             </a>
           </div>
         </div>
