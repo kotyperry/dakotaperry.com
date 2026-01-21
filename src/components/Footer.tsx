@@ -2,8 +2,11 @@ import './Footer.css'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { Link, useLocation } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { op } from '../openpanel'
+
+const MotionLink = motion.create(Link)
 
 const linkVariants = {
   hidden: { opacity: 0, x: -10 },
@@ -23,6 +26,8 @@ export default function Footer() {
   const mainRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const [skewDirection, setSkewDirection] = useState<'left' | 'right' | null>(null)
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!mainRef.current) return
@@ -37,12 +42,16 @@ export default function Footer() {
   }, [])
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault()
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    // Only prevent default and scroll if we're on the home page
+    if (isHomePage) {
+      e.preventDefault()
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
     }
-  }, [])
+    // If not on home page, let the Link component handle navigation
+  }, [isHomePage])
 
   const resizeText = useCallback(() => {
     if (!mainRef.current || !textRef.current) return
@@ -98,10 +107,11 @@ export default function Footer() {
             {['Home', 'About', 'Work', 'Contact'].map((item, i) => {
               const sectionId = item === 'Home' ? 'intro' : item === 'Work' ? 'projects' : item.toLowerCase()
               return (
-                <motion.a 
+                <MotionLink
                   key={item}
-                  href={`#${sectionId}`}
-                  onClick={(e) => handleNavClick(e, sectionId)}
+                  to="/"
+                  hash={sectionId}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, sectionId)}
                   className="footer-link"
                   custom={i}
                   variants={linkVariants}
@@ -110,7 +120,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                 >
                   {item}
-                </motion.a>
+                </MotionLink>
               )
             })}
           </div>
