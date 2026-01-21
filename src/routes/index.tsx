@@ -1,4 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useLocation } from '@tanstack/react-router'
+import { useEffect } from 'react'
 
 import About from '../components/About'
 import Clients from '../components/Clients'
@@ -15,6 +16,21 @@ export const Route = createFileRoute('/')({
 })
 
 function IndexComponent() {
+  const location = useLocation()
+
+  // Scroll to hash section when navigating to this page with a hash
+  useEffect(() => {
+    if (location.hash) {
+      // Small delay to ensure DOM is rendered
+      setTimeout(() => {
+        const element = document.getElementById(location.hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    }
+  }, [location.hash])
+
   return (
     <>
       <main className="main-content">
