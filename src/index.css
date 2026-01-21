@@ -10,11 +10,16 @@
   --border: #1a1a1a;
   --border-light: #2a2a2a;
   --accent-glow: rgba(255, 255, 255, 0.05);
+
+  /* Orange Accent */
+  --accent-orange: #ff6b35;
+  --accent-orange-light: #ff8c5a;
+  --accent-orange-glow: rgba(255, 107, 53, 0.15);
   --headline-glow:
-    0 0 10px rgba(255, 255, 255, 0.08),
-    0 0 30px rgba(255, 255, 255, 0.06),
-    0 0 60px rgba(255, 255, 255, 0.04),
-    0 0 100px rgba(255, 255, 255, 0.02);
+    0 0 40px rgba(255, 255, 255, 0.04),
+    0 0 80px rgba(255, 255, 255, 0.02),
+    0 0 150px rgba(255, 255, 255, 0.01),
+    0 0 250px rgba(255, 255, 255, 0.005);
 
   /* Typography */
   --font-display: 'Bebas Neue', sans-serif;
@@ -44,11 +49,16 @@
   --border: #e0e0e0;
   --border-light: #d0d0d0;
   --accent-glow: rgba(0, 0, 0, 0.03);
+
+  /* Orange Accent (light theme) */
+  --accent-orange: #e55a2b;
+  --accent-orange-light: #ff6b35;
+  --accent-orange-glow: rgba(229, 90, 43, 0.12);
   --headline-glow:
-    0 0 10px rgba(0, 0, 0, 0.06),
-    0 0 30px rgba(0, 0, 0, 0.04),
-    0 0 60px rgba(0, 0, 0, 0.02),
-    0 0 100px rgba(0, 0, 0, 0.01);
+    0 0 40px rgba(0, 0, 0, 0.03),
+    0 0 80px rgba(0, 0, 0, 0.015),
+    0 0 150px rgba(0, 0, 0, 0.008),
+    0 0 250px rgba(0, 0, 0, 0.004);
 }
 
 /* Reset & Base */

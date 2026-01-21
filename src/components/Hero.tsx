@@ -25,12 +25,16 @@ export default function Hero() {
 
           <h1 className="hero-headline">
             <span className="headline-line">
-              Growing businesses.
+              Your Business.
             </span>
             <span className="headline-line">
-              Powered by AI.
+              Smarter With AI.
             </span>
           </h1>
+
+          <p className="hero-description">
+            Eliminate the bottlenecks that are slowing down your growth. Our AI-driven tools streamline your operations by handling repetitive tasks, freeing your team to focus on high-impact creativity and strategy. Experience the perfect blend of human ingenuity and machine efficiency to maximize your bottom line.
+          </p>
 
           <div className="hero-cta">
             <a href="#projects" onClick={(e) => handleClick(e, 'projects', 'See My Work')} className="cta-primary">

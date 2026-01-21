@@ -77,7 +77,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--text-primary);
+  background: var(--accent-orange);
   transform: scaleY(0);
   transition: transform var(--transition-medium);
 }
@@ -133,5 +133,5 @@
 }
 
 .menu-socials a:hover {
-  color: var(--text-primary);
+  color: var(--accent-orange);
 }
