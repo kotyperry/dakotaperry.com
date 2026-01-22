@@ -6,12 +6,12 @@ import { Link, useLocation } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 
 // Debounce utility for resize handler
-function debounce<T extends (...args: unknown[]) => void>(fn: T, ms: number): T {
+function debounce<T extends (...args: never[]) => void>(fn: T, ms: number): (...args: Parameters<T>) => void {
   let timeoutId: ReturnType<typeof setTimeout>
-  return ((...args: unknown[]) => {
+  return (...args: Parameters<T>) => {
     clearTimeout(timeoutId)
     timeoutId = setTimeout(() => fn(...args), ms)
-  }) as T
+  }
 }
 
 // Lazy analytics tracking - only track if openpanel is loaded

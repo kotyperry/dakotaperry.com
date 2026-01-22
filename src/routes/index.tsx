@@ -22,15 +22,20 @@ function IndexComponent() {
   const location = useLocation()
 
   // Scroll to hash section when navigating to this page with a hash
+  // Uses retry mechanism to handle lazy-loaded sections
   useEffect(() => {
     if (location.hash) {
-      // Small delay to ensure DOM is rendered
-      setTimeout(() => {
+      const scrollToElement = (attempts = 0) => {
         const element = document.getElementById(location.hash)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        } else if (attempts < 10) {
+          // Retry with exponential backoff for lazy-loaded sections
+          setTimeout(() => scrollToElement(attempts + 1), 100 * (attempts + 1))
         }
-      }, 100)
+      }
+      // Initial delay to allow first render
+      setTimeout(() => scrollToElement(), 100)
     }
   }, [location.hash])
 
