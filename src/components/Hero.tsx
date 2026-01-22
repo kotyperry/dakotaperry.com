@@ -1,10 +1,14 @@
 import './Hero.css'
-import { op } from '../openpanel'
+
+// Lazy analytics tracking - only track if openpanel is loaded
+const track = (event: string, data: Record<string, string>) => {
+  import('../openpanel').then(({ op }) => op.track(event, data)).catch(() => {})
+}
 
 export default function Hero() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string, buttonName: string) => {
     e.preventDefault()
-    op.track('Hero CTA Click', { button: buttonName, destination: sectionId })
+    track('Hero CTA Click', { button: buttonName, destination: sectionId })
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' })

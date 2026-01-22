@@ -4,7 +4,20 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Link, useLocation } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import { op } from '../openpanel'
+
+// Debounce utility for resize handler
+function debounce<T extends (...args: unknown[]) => void>(fn: T, ms: number): T {
+  let timeoutId: ReturnType<typeof setTimeout>
+  return ((...args: unknown[]) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn(...args), ms)
+  }) as T
+}
+
+// Lazy analytics tracking - only track if openpanel is loaded
+const track = (event: string, data: Record<string, string>) => {
+  import('../openpanel').then(({ op }) => op.track(event, data)).catch(() => {})
+}
 
 const MotionLink = motion.create(Link)
 
@@ -81,9 +94,11 @@ export default function Footer() {
     requestAnimationFrame(() => {
       resizeText()
     })
-    
-    window.addEventListener('resize', resizeText)
-    return () => window.removeEventListener('resize', resizeText)
+
+    // Debounce resize handler to prevent micro-stutters
+    const debouncedResize = debounce(resizeText, 150)
+    window.addEventListener('resize', debouncedResize)
+    return () => window.removeEventListener('resize', debouncedResize)
   }, [resizeText])
 
   return (
@@ -139,7 +154,7 @@ export default function Footer() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 aria-label="GitHub"
-                onClick={() => op.track('Social Click', { platform: 'GitHub', location: 'Footer' })}
+                onClick={() => track('Social Click', { platform: 'GitHub', location: 'Footer' })}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -156,7 +171,7 @@ export default function Footer() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 aria-label="LinkedIn"
-                onClick={() => op.track('Social Click', { platform: 'LinkedIn', location: 'Footer' })}
+                onClick={() => track('Social Click', { platform: 'LinkedIn', location: 'Footer' })}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>

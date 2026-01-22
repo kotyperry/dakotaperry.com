@@ -231,6 +231,7 @@ ul, ol {
 /* Hover lift effect */
 .hover-lift {
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  will-change: transform;
 }
 
 .hover-lift:hover {
@@ -241,6 +242,7 @@ ul, ol {
 /* Subtle scale on hover */
 .hover-scale {
   transition: transform var(--transition-medium);
+  will-change: transform;
 }
 
 .hover-scale:hover {
@@ -273,4 +275,16 @@ ul, ol {
 .underline-animate:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Performance hints for animated elements */
+.animate-fade-in,
+.animate-fade-in-up,
+.animate-slide-in-left {
+  will-change: opacity, transform;
+}
+
+/* Contain paint for heavy sections to isolate repaints */
+section {
+  contain: layout style;
 }
