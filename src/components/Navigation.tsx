@@ -4,7 +4,11 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from '@tanstack/react-router'
 
 import { motion } from 'framer-motion'
-import { op } from '../openpanel'
+
+// Lazy analytics tracking - only track if openpanel is loaded
+const track = (event: string, data: Record<string, string>) => {
+  import('../openpanel').then(({ op }) => op.track(event, data)).catch(() => {})
+}
 
 interface NavigationProps {
   onMenuClick: () => void
@@ -29,7 +33,7 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
 
   const handleAvailableClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    op.track('Available For Work Click', { from_page: isWorkPage ? 'Work Detail' : 'Home' })
+    track('Available For Work Click', { from_page: isWorkPage ? 'Work Detail' : 'Home' })
     if (isWorkPage) {
       // If on a work page, navigate to home first then scroll
       navigate({ to: '/' })

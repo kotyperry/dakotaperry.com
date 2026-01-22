@@ -292,10 +292,15 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                     >
                       {item.type === 'image' ? (
                         <div className="media-image-wrapper">
-                          <img 
-                            src={item.src} 
+                          <img
+                            src={item.src}
+                            srcSet={/w=\d+/.test(item.src) ? `${item.src.replace(/w=\d+/, 'w=400')} 400w, ${item.src.replace(/w=\d+/, 'w=800')} 800w, ${item.src} 1200w` : undefined}
+                            sizes={/w=\d+/.test(item.src) ? "(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px" : undefined}
                             alt={item.alt || `${project.title} - Image ${index + 1}`}
                             loading="lazy"
+                            decoding="async"
+                            width={1200}
+                            height={item.aspectRatio === 'portrait' ? 1600 : 750}
                           />
                           <div className="media-overlay" />
                         </div>
