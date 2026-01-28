@@ -2,6 +2,18 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Outlet, createRootRoute, useLocation } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
+// Throttle utility for scroll performance
+function throttle<T extends (...args: never[]) => void>(fn: T, ms: number): (...args: Parameters<T>) => void {
+  let lastCall = 0
+  return (...args: Parameters<T>) => {
+    const now = Date.now()
+    if (now - lastCall >= ms) {
+      lastCall = now
+      fn(...args)
+    }
+  }
+}
+
 import Loader from '../components/Loader'
 import Menu from '../components/Menu'
 import Navigation from '../components/Navigation'
@@ -57,10 +69,10 @@ function RootComponent() {
   useEffect(() => {
     const handleScroll = () => {
       const isWorkPage = location.pathname.startsWith('/work/')
-      const sections = isWorkPage 
+      const sections = isWorkPage
         ? ['hero', 'overview', 'tech', 'highlights', 'gallery']
         : ['intro', 'projects', 'about', 'contact']
-      
+
       const scrollPosition = window.scrollY + window.innerHeight / 3
 
       for (const section of sections) {
@@ -75,11 +87,13 @@ function RootComponent() {
       }
     }
 
+    const throttledScroll = throttle(handleScroll, 100)
+
     // Initial call to set active section
     handleScroll()
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    return () => window.removeEventListener('scroll', throttledScroll)
   }, [location.pathname])
 
   // Reset active section when navigating between pages

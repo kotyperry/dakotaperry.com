@@ -10,6 +10,18 @@ const track = (event: string, data: Record<string, string>) => {
   import('../openpanel').then(({ op }) => op.track(event, data)).catch(() => {})
 }
 
+// Throttle utility for scroll performance
+function throttle<T extends (...args: never[]) => void>(fn: T, ms: number): (...args: Parameters<T>) => void {
+  let lastCall = 0
+  return (...args: Parameters<T>) => {
+    const now = Date.now()
+    if (now - lastCall >= ms) {
+      lastCall = now
+      fn(...args)
+    }
+  }
+}
+
 interface NavigationProps {
   onMenuClick: () => void
 }
@@ -23,8 +35,13 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const throttledScroll = throttle(handleScroll, 100)
+
+    // Set initial state
+    handleScroll()
+
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    return () => window.removeEventListener('scroll', throttledScroll)
   }, [])
 
   const handleClose = () => {
