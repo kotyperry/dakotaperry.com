@@ -5,14 +5,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 
-// Debounce utility for resize handler
-function debounce<T extends (...args: never[]) => void>(fn: T, ms: number): (...args: Parameters<T>) => void {
-  let timeoutId: ReturnType<typeof setTimeout>
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => fn(...args), ms)
-  }
-}
 
 // Lazy analytics tracking - only track if openpanel is loaded
 const track = (event: string, data: Record<string, string>) => {
@@ -39,6 +31,7 @@ export default function Footer() {
   const mainRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const [skewDirection, setSkewDirection] = useState<'left' | 'right' | null>(null)
+  const prevSkewRef = useRef<'left' | 'right' | null>(null)
   const location = useLocation()
   const isHomePage = location.pathname === '/'
 
@@ -47,10 +40,17 @@ export default function Footer() {
     const rect = mainRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const midpoint = rect.width / 2
-    setSkewDirection(x < midpoint ? 'left' : 'right')
+    const newDirection = x < midpoint ? 'left' : 'right'
+
+    // Only update state if direction actually changed
+    if (newDirection !== prevSkewRef.current) {
+      prevSkewRef.current = newDirection
+      setSkewDirection(newDirection)
+    }
   }, [])
 
   const handleMouseLeave = useCallback(() => {
+    prevSkewRef.current = null
     setSkewDirection(null)
   }, [])
 
@@ -66,40 +66,44 @@ export default function Footer() {
     // If not on home page, let the Link component handle navigation
   }, [isHomePage])
 
-  const resizeText = useCallback(() => {
-    if (!mainRef.current || !textRef.current) return
-    
-    const mainStyles = getComputedStyle(mainRef.current)
-    const paddingLeft = parseFloat(mainStyles.paddingLeft)
-    const paddingRight = parseFloat(mainStyles.paddingRight)
-    const containerWidth = mainRef.current.offsetWidth - paddingLeft - paddingRight
-    const textElement = textRef.current
-    
-    // Temporarily set a base size to measure
-    textElement.style.fontSize = '100px'
-    
-    // Force reflow to get accurate measurement
-    void textElement.offsetWidth
-    const naturalWidth = textElement.scrollWidth
-    
-    // Calculate the exact scale to fill container
-    const scale = containerWidth / naturalWidth
-    const newFontSize = 100 * scale
-    
-    textElement.style.fontSize = `${newFontSize}px`
-  }, [])
-
   useEffect(() => {
-    // Initial resize after mount
-    requestAnimationFrame(() => {
-      resizeText()
+    if (!mainRef.current || !textRef.current) return
+
+    const mainElement = mainRef.current
+    const textElement = textRef.current
+
+    // Cache the natural width at 100px so we only measure once
+    let naturalWidthAt100px: number | null = null
+
+    const measureAndResize = () => {
+      const mainStyles = getComputedStyle(mainElement)
+      const paddingLeft = parseFloat(mainStyles.paddingLeft)
+      const paddingRight = parseFloat(mainStyles.paddingRight)
+      const containerWidth = mainElement.offsetWidth - paddingLeft - paddingRight
+
+      // Measure natural width only once
+      if (naturalWidthAt100px === null) {
+        textElement.style.fontSize = '100px'
+        naturalWidthAt100px = textElement.scrollWidth
+      }
+
+      // Calculate scale from cached measurement
+      const scale = containerWidth / naturalWidthAt100px
+      textElement.style.fontSize = `${100 * scale}px`
+    }
+
+    // Initial measurement
+    requestAnimationFrame(measureAndResize)
+
+    // Use ResizeObserver instead of resize event for better performance
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(measureAndResize)
     })
 
-    // Debounce resize handler to prevent micro-stutters
-    const debouncedResize = debounce(resizeText, 150)
-    window.addEventListener('resize', debouncedResize)
-    return () => window.removeEventListener('resize', debouncedResize)
-  }, [resizeText])
+    resizeObserver.observe(mainElement)
+
+    return () => resizeObserver.disconnect()
+  }, [])
 
   return (
     <footer className="footer">
