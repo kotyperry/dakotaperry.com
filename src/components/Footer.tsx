@@ -1,9 +1,9 @@
 import './Footer.css'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { Link, useLocation } from '@tanstack/react-router'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 
 
 // Lazy analytics tracking - only track if openpanel is loaded
@@ -30,29 +30,27 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const mainRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
-  const [skewDirection, setSkewDirection] = useState<'left' | 'right' | null>(null)
-  const prevSkewRef = useRef<'left' | 'right' | null>(null)
   const location = useLocation()
   const isHomePage = location.pathname === '/'
+  const skewValue = useMotionValue(0)
+  const smoothSkew = useSpring(skewValue, {
+    stiffness: 320,
+    damping: 26,
+    mass: 0.45,
+  })
+  const smoothX = useTransform(smoothSkew, (v) => -v)
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!mainRef.current) return
     const rect = mainRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
-    const midpoint = rect.width / 2
-    const newDirection = x < midpoint ? 'left' : 'right'
-
-    // Only update state if direction actually changed
-    if (newDirection !== prevSkewRef.current) {
-      prevSkewRef.current = newDirection
-      setSkewDirection(newDirection)
-    }
-  }, [])
+    const progress = Math.max(-1, Math.min(1, (x / rect.width - 0.5) * 2))
+    skewValue.set(progress * 8)
+  }, [skewValue])
 
   const handleMouseLeave = useCallback(() => {
-    prevSkewRef.current = null
-    setSkewDirection(null)
-  }, [])
+    skewValue.set(0)
+  }, [skewValue])
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     // Only prevent default and scroll if we're on the home page
@@ -200,7 +198,7 @@ export default function Footer() {
           <motion.h2 
             ref={textRef}
             className="footer-headline"
-            data-skew={skewDirection}
+            style={{ skewX: smoothSkew, x: smoothX }}
           >
             LETS WORK
           </motion.h2>

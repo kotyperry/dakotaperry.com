@@ -36,52 +36,10 @@
   white-space: nowrap;
   display: block;
   cursor: pointer;
-  transition: transform 0.15s ease;
   transform-origin: bottom center;
   position: relative;
   text-shadow: var(--headline-glow);
-}
-
-/* Left side hover - negative skew (leans right like italic) */
-.footer-headline[data-skew="left"] {
-  transform: skewX(-8deg) translateX(8px);
-  animation: glitchSkewLeft 0.3s ease-out;
-}
-
-/* Right side hover - positive skew (leans left) */
-.footer-headline[data-skew="right"] {
-  transform: skewX(8deg) translateX(-8px);
-  animation: glitchSkewRight 0.3s ease-out;
-}
-
-@keyframes glitchSkewLeft {
-  0% {
-    transform: skewX(0deg) translateX(0);
-  }
-  40% {
-    transform: skewX(-9deg) translateX(9px);
-  }
-  70% {
-    transform: skewX(-7deg) translateX(7px);
-  }
-  100% {
-    transform: skewX(-8deg) translateX(8px);
-  }
-}
-
-@keyframes glitchSkewRight {
-  0% {
-    transform: skewX(0deg) translateX(0);
-  }
-  40% {
-    transform: skewX(9deg) translateX(-9px);
-  }
-  70% {
-    transform: skewX(7deg) translateX(-7px);
-  }
-  100% {
-    transform: skewX(8deg) translateX(-8px);
-  }
+  will-change: transform;
 }
 
 .footer-cta {
