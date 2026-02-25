@@ -5,31 +5,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build & Development Commands
 
 ```bash
-npm run dev       # Start development server (http://localhost:5173)
-npm run build     # TypeScript compile + Vite production build
+npm run dev       # Start Astro dev server (http://localhost:4321)
+npm run build     # Astro production build
 npm run lint      # Run ESLint
 npm run preview   # Preview production build locally
 ```
 
 ## Architecture Overview
 
-This is a React SPA portfolio website using:
-- **React 18** with TypeScript
-- **Vite** for build tooling
-- **TanStack Router** for file-based routing
-- **Framer Motion** for animations
+This is a static-first portfolio built with Astro and React islands:
+- **Astro 5** - Static site framework with `output: "static"`
+- **React 18** - Interactive islands via `@astrojs/react`
+- **TypeScript** for type safety
+- **Framer Motion** for interactive animations in React islands
 - **Vanilla CSS** with CSS variables for theming
 
 ### Routing Structure
 
-Routes are defined in `src/routes/`:
-- `__root.tsx` - Root layout (theme provider, navigation, sidebar)
-- `index.tsx` - Home page with all portfolio sections
-- `work/$projectId.tsx` - Dynamic project detail pages
+Routes are defined in `src/pages/`:
+- `index.astro` - Home page with all portfolio sections
+- `work/` - Case study detail pages generated from project data
+- `404.astro` - Custom 404 page
+
+Layout shell lives in `src/layouts/Layout.astro`.
+
+### Component Architecture
+
+- `src/components/astro/` - Static Astro sections (rendered at build time)
+- `src/components/react/` - Client-hydrated React islands (interactive UI)
 
 ### Styling System
 
-CSS variables are defined in `src/index.css`:
+CSS variables are defined in `src/styles/global.css`:
 - Dark theme (default) and light theme via `[data-theme="light"]`
 - Orange accent color: `--accent-orange`
 - Premium easing curves: `--ease-out-expo`, `--ease-elastic`, etc.
@@ -37,7 +44,9 @@ CSS variables are defined in `src/index.css`:
 
 ### Key Patterns
 
-- Components live in `src/components/` with co-located `.css` files
+- Static Astro components for content-heavy sections, React islands for interactivity
 - Framer Motion variants for staggered and viewport-triggered animations
 - Theme toggle persists to localStorage
+- Viewport observer script in `src/scripts/` for active section tracking
 - OpenPanel analytics tracking (`src/openpanel.ts`)
+- Project data shared via `src/data/`
