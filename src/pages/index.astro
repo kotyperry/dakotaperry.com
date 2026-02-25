@@ -1,0 +1,91 @@
+---
+import About from "../components/astro/About.astro";
+import Clients from "../components/astro/Clients.astro";
+import Experience from "../components/astro/Experience.astro";
+import Hero from "../components/astro/Hero.astro";
+import Projects from "../components/astro/Projects.astro";
+import SectionDivider from "../components/astro/SectionDivider.astro";
+import TechStack from "../components/astro/TechStack.astro";
+import Contact from "../components/react/Contact";
+import Footer from "../components/react/Footer";
+import Loader from "../components/react/Loader";
+import NavigationIsland from "../components/react/NavigationIsland";
+import Sidebar from "../components/react/Sidebar";
+import Stats from "../components/react/Stats";
+import UnderConstruction from "../components/react/UnderConstruction";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <UnderConstruction client:load />
+  <Loader client:load />
+
+  <div class="app-wrapper">
+    <Sidebar client:load />
+    <NavigationIsland client:load />
+
+    <main class="main-content">
+      <Hero />
+
+      <SectionDivider />
+
+      <Clients />
+
+      <SectionDivider />
+
+      <section id="projects" class="projects-standalone">
+        <Projects />
+      </section>
+
+      <SectionDivider />
+
+      <section id="about" class="about-standalone">
+        <div class="about-grid">
+          <About />
+          <TechStack />
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      <div class="content-grid">
+        <section class="grid-section experience-section">
+          <Experience />
+        </section>
+
+        <section class="grid-section stats-section">
+          <Stats client:visible />
+        </section>
+      </div>
+
+      <SectionDivider />
+
+      <section id="contact" class="contact-standalone">
+        <Contact client:visible />
+      </section>
+
+      <SectionDivider />
+    </main>
+
+    <Footer client:visible />
+  </div>
+
+  <script>
+    const hash = window.location.hash;
+    if (hash) {
+      const scrollToHash = (attempts = 0) => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        if (attempts < 10) {
+          window.setTimeout(() => scrollToHash(attempts + 1), 100 * (attempts + 1));
+        }
+      };
+
+      window.setTimeout(() => scrollToHash(), 100);
+    }
+  </script>
+</Layout>

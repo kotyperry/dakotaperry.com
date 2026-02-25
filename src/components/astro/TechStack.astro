@@ -1,0 +1,34 @@
+---
+import "./TechStack.css";
+
+const stack: Record<string, string[]> = {
+  Languages: ["TypeScript", "JavaScript", "Python", "SQL"],
+  Frontend: ["React", "Next.js", "Vue", "Tailwind"],
+  Backend: ["Node.js", "Express", "PostgreSQL", "MongoDB"],
+  Tools: ["Git", "Docker", "Figma", "AWS"],
+};
+---
+
+<div class="tech" data-animate>
+  <span class="section-label">Stack</span>
+
+  <div class="tech-grid">
+    {
+      Object.entries(stack).map(([category, items], groupIndex) => (
+        <div class="tech-group" data-animate data-animate-delay={`${0.06 + groupIndex * 0.05}s`}>
+          <h3 class="tech-category">{category}</h3>
+          <ul class="tech-list">
+            {
+              items.map((item, itemIndex) => (
+                <li data-animate="left" data-animate-delay={`${0.1 + groupIndex * 0.05 + itemIndex * 0.03}s`}>
+                  <span class="tech-item-dot" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</div>

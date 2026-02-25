@@ -1,0 +1,45 @@
+---
+import "./About.css";
+
+const values = [
+  { num: "01", text: "AI-Driven Solutions" },
+  { num: "02", text: "Efficiency Optimized" },
+  { num: "03", text: "Business Impact" },
+];
+---
+
+<div class="about" data-animate>
+  <span class="section-label">About</span>
+
+  <h2 class="about-headline" data-animate data-animate-delay="0.05s">
+    I help businesses unlock AI potential and build unstoppable efficiency.
+  </h2>
+
+  <div class="about-body" data-animate="fade" data-animate-delay="0.1s">
+    <p>
+      Based in Tulsa, Oklahoma, I've spent the last 5+ years helping businesses
+      of all sizes integrate AI into their operations and boost productivity.
+    </p>
+    <p>
+      I specialize in custom AI solutions, automation, and digital
+      transformation that drive real business results. From startups to Fortune
+      500 companies, I create systems that work smarter so your team can focus
+      on what matters.
+    </p>
+  </div>
+
+  <div class="about-values">
+    {
+      values.map((value, index) => (
+        <div
+          class="value"
+          data-animate="left"
+          data-animate-delay={`${0.14 + index * 0.05}s`}
+        >
+          <span class="value-num">{value.num}</span>
+          <span class="value-text">{value.text}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>

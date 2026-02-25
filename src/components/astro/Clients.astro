@@ -1,0 +1,40 @@
+---
+import "./Clients.css";
+
+const clients = [
+  { name: "Google", logo: "GOOGLE" },
+  { name: "Microsoft", logo: "MICROSOFT" },
+  { name: "Amazon", logo: "AMAZON" },
+  { name: "Apple", logo: "APPLE" },
+  { name: "Meta", logo: "META" },
+  { name: "Netflix", logo: "NETFLIX" },
+  { name: "Spotify", logo: "SPOTIFY" },
+  { name: "Stripe", logo: "STRIPE" },
+];
+---
+
+<section class="clients">
+  <div class="clients-container" data-animate>
+    <div class="clients-header" data-animate="fade" data-animate-delay="0.05s">
+      <span class="section-label">Trusted By</span>
+      <p class="clients-subtext">
+        I've had the privilege of working with industry-leading companies.
+      </p>
+    </div>
+
+    <div class="clients-grid">
+      {
+        clients.map((client, index) => (
+          <div
+            class="client-logo"
+            data-animate
+            data-animate-delay={`${0.08 + index * 0.04}s`}
+          >
+            <span class="logo-text">{client.logo}</span>
+            <span class="client-hover-bg" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
