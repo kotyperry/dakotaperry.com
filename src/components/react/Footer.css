@@ -38,7 +38,7 @@
   cursor: pointer;
   transform-origin: bottom center;
   position: relative;
-  text-shadow: var(--headline-glow);
+  /* text-shadow: var(--headline-glow); */
   will-change: transform;
 }
 

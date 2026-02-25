@@ -112,5 +112,5 @@
 .client-logo:hover .logo-text {
   color: var(--text-primary);
   transform: translateY(-2px);
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
 }

@@ -3,11 +3,11 @@ import "./Navigation.css";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const track = (event: string, data: Record<string, string>) => {
-  import("../../openpanel")
-    .then(({ op }) => op.track(event, data))
-    .catch(() => {});
-};
+// const track = (event: string, data: Record<string, string>) => {
+//   import("../../openpanel")
+//     .then(({ op }) => op.track(event, data))
+//     .catch(() => {});
+// };
 
 function throttle<T extends (...args: never[]) => void>(
   fn: T,
@@ -64,9 +64,9 @@ export default function Navigation({ onMenuClick }: NavigationProps) {
 
   const handleAvailableClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    track("Available For Work Click", {
-      from_page: workPage ? "Work Detail" : "Home",
-    });
+    // track("Available For Work Click", {
+    //   from_page: workPage ? "Work Detail" : "Home",
+    // });
 
     if (workPage) {
       window.location.href = "/#contact";
