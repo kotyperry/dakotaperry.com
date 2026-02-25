@@ -1,0 +1,35 @@
+---
+import ProjectDetailContent from "../../components/astro/ProjectDetailContent.astro";
+import Footer from "../../components/react/Footer";
+import Loader from "../../components/react/Loader";
+import NavigationIsland from "../../components/react/NavigationIsland";
+import Sidebar from "../../components/react/Sidebar";
+import UnderConstruction from "../../components/react/UnderConstruction";
+import { projects } from "../../data/projects";
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { projectId: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | Dakota Perry`} description={project.description}>
+  <UnderConstruction client:load />
+  <Loader client:load />
+
+  <div class="app-wrapper">
+    <Sidebar client:load />
+    <NavigationIsland client:load />
+
+    <main class="main-content project-detail-page">
+      <ProjectDetailContent project={project} />
+    </main>
+
+    <Footer client:visible />
+  </div>
+</Layout>

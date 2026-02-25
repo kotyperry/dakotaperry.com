@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import "./UnderConstruction.css";
 
 const SITE_PASSWORD = "kperry0817";
 const AUTH_KEY = "portfolio_auth";
 
-interface UnderConstructionProps {
-  children: React.ReactNode;
-}
-
-export default function UnderConstruction({
-  children,
-}: UnderConstructionProps) {
+export default function UnderConstruction() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,24 +19,25 @@ export default function UnderConstruction({
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
 
     if (password === SITE_PASSWORD) {
       setIsExiting(true);
-      setTimeout(() => {
+      window.setTimeout(() => {
         localStorage.setItem(AUTH_KEY, "true");
         setIsAuthenticated(true);
       }, 500);
-    } else {
-      setError("Incorrect password");
-      setPassword("");
-      setTimeout(() => setError(""), 3000);
+      return;
     }
+
+    setError("Incorrect password");
+    setPassword("");
+    window.setTimeout(() => setError(""), 3000);
   };
 
   if (isAuthenticated) {
-    return <>{children}</>;
+    return null;
   }
 
   return (
@@ -95,7 +91,7 @@ export default function UnderConstruction({
                   <input
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                     placeholder="Enter password"
                     className={`construction-input ${error ? "input-error" : ""}`}
                     autoFocus
@@ -127,7 +123,7 @@ export default function UnderConstruction({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <span className="footer-text">Dakota Perry — Portfolio</span>
+              <span className="footer-text">Dakota Perry - Portfolio</span>
             </motion.div>
           </div>
 

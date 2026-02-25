@@ -1,0 +1,73 @@
+---
+import "./Hero.css";
+---
+
+<section id="intro" class="hero">
+  <div class="hero-layout">
+    <div class="hero-left">
+      <div data-animate="fade">
+        <span class="hero-label">
+          <span class="label-dot" />
+          Dakota Perry - Tulsa, OK
+        </span>
+      </div>
+
+      <h1 class="hero-headline" data-animate data-animate-delay="0.05s">
+        <span class="headline-line">Your Business.</span>
+        <span class="headline-line">Smarter With AI.</span>
+      </h1>
+
+      <p class="hero-description" data-animate data-animate-delay="0.1s">
+        Eliminate the bottlenecks that are slowing down your growth. Our
+        AI-driven tools streamline your operations by handling repetitive tasks,
+        freeing your team to focus on high-impact creativity and strategy.
+        Experience the perfect blend of human ingenuity and machine efficiency to
+        maximize your bottom line.
+      </p>
+
+      <div class="hero-cta" data-animate data-animate-delay="0.15s">
+        <a href="#contact" data-hero-contact class="cta-secondary">
+          <span>Let's talk</span>
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right" data-animate="scale" data-animate-delay="0.2s">
+      <div class="hero-image-wrapper">
+        <div class="hero-image-placeholder">
+          <span class="placeholder-text">Image</span>
+        </div>
+        <div class="hero-image-glow" />
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-decoration" data-animate="fade" data-animate-delay="0.25s">
+    <div class="decoration-line" />
+  </div>
+</section>
+
+<script>
+  const heroContact = document.querySelector("[data-hero-contact]");
+
+  if (heroContact) {
+    heroContact.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      import("../../openpanel")
+        .then(({ op }) => {
+          op.track("Hero CTA Click", {
+            button: "Lets Talk",
+            destination: "contact",
+          });
+        })
+        .catch(() => {});
+
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
+</script>

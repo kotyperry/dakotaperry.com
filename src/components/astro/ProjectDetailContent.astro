@@ -1,0 +1,150 @@
+---
+import "./ProjectDetailContent.css";
+import type { Project } from "../../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const getSrcSet = (src: string) => {
+  if (!/w=\d+/.test(src)) {
+    return undefined;
+  }
+
+  return `${src.replace(/w=\d+/, "w=400")} 400w, ${src.replace(/w=\d+/, "w=800")} 800w, ${src} 1200w`;
+};
+
+const getSizes = (src: string) => {
+  if (!/w=\d+/.test(src)) {
+    return undefined;
+  }
+
+  return "(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px";
+};
+---
+
+<div id="hero" class="project-detail-hero" style={`background:${project.color}`} data-animate="fade">
+  <div class="hero-content">
+    <span class="hero-category" data-animate data-animate-delay="0.05s">
+      {project.category}
+    </span>
+    <h1 class="hero-title" data-animate data-animate-delay="0.1s">
+      {project.title}
+    </h1>
+    <p class="hero-description" data-animate data-animate-delay="0.15s">
+      {project.description}
+    </p>
+  </div>
+  <div class="hero-gradient" />
+</div>
+
+<div id="info" class="project-info-bar" data-animate data-animate-delay="0.2s">
+  <div class="info-item">
+    <span class="info-label">Role</span>
+    <span class="info-value">{project.role}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">Duration</span>
+    <span class="info-value">{project.duration}</span>
+  </div>
+  <div class="info-item">
+    <span class="info-label">Year</span>
+    <span class="info-value">{project.year}</span>
+  </div>
+  {
+    project.client && (
+      <div class="info-item">
+        <span class="info-label">Client</span>
+        <span class="info-value">{project.client}</span>
+      </div>
+    )
+  }
+  {
+    project.liveUrl && (
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="info-link">
+        <span>View Live</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+    )
+  }
+</div>
+
+<div class="project-detail-content">
+  <section id="overview" class="content-section" data-animate>
+    <h2 class="section-title">Overview</h2>
+    <p class="section-text">{project.fullDescription}</p>
+  </section>
+
+  <section id="tech" class="content-section" data-animate>
+    <h2 class="section-title">Technology Stack</h2>
+    <div class="tech-grid">
+      {
+        project.tech.map((tech, index) => (
+          <span class="tech-tag" data-animate="scale" data-animate-delay={`${0.04 + index * 0.03}s`}>
+            {tech}
+          </span>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    project.highlights.length > 0 && (
+      <section id="highlights" class="content-section" data-animate>
+        <h2 class="section-title">Key Highlights</h2>
+        <ul class="highlights-list">
+          {project.highlights.map((highlight, index) => (
+            <li data-animate="left" data-animate-delay={`${0.05 + index * 0.04}s`}>
+              <span class="highlight-marker">→</span>
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    project.media.length > 0 && (
+      <section id="gallery" class="content-section media-section" data-animate>
+        <h2 class="section-title">Project Gallery</h2>
+        <div class="media-gallery">
+          {project.media.map((item, index) => (
+            <div
+              class={`media-item ${item.aspectRatio || "landscape"}`}
+              data-animate
+              data-animate-delay={`${0.04 + index * 0.05}s`}
+            >
+              {item.type === "image" ? (
+                <div class="media-image-wrapper">
+                  <img
+                    src={item.src}
+                    srcset={getSrcSet(item.src)}
+                    sizes={getSizes(item.src)}
+                    alt={item.alt || `${project.title} - Image ${index + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height={item.aspectRatio === "portrait" ? "1600" : "750"}
+                  />
+                  <div class="media-overlay" />
+                </div>
+              ) : (
+                <div class="media-video-wrapper">
+                  <video src={item.src} controls playsinline preload="metadata">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
+              {item.caption && <p class="media-caption">{item.caption}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</div>
