@@ -55,14 +55,14 @@ import "./Hero.css";
     heroContact.addEventListener("click", (event) => {
       event.preventDefault();
 
-      import("../../openpanel")
-        .then(({ op }) => {
-          op.track("Hero CTA Click", {
-            button: "Lets Talk",
-            destination: "contact",
-          });
-        })
-        .catch(() => {});
+      // import("../../openpanel")
+      //   .then(({ op }) => {
+      //     op.track("Hero CTA Click", {
+      //       button: "Lets Talk",
+      //       destination: "contact",
+      //     });
+      //   })
+      //   .catch(() => {});
 
       const element = document.getElementById("contact");
       if (element) {

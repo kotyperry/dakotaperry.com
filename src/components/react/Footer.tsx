@@ -10,11 +10,11 @@ import {
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-const track = (event: string, data: Record<string, string>) => {
-  import("../../openpanel")
-    .then(({ op }) => op.track(event, data))
-    .catch(() => {});
-};
+// const track = (event: string, data: Record<string, string>) => {
+//   import("../../openpanel")
+//     .then(({ op }) => op.track(event, data))
+//     .catch(() => {});
+// };
 
 const linkVariants = {
   hidden: { opacity: 0, x: -10 },
@@ -186,12 +186,12 @@ export default function Footer() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 aria-label="GitHub"
-                onClick={() =>
-                  track("Social Click", {
-                    platform: "GitHub",
-                    location: "Footer",
-                  })
-                }
+                // onClick={() =>
+                //   track("Social Click", {
+                //     platform: "GitHub",
+                //     location: "Footer",
+                //   })
+                // }
               >
                 <svg
                   width="20"
@@ -217,12 +217,12 @@ export default function Footer() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 aria-label="LinkedIn"
-                onClick={() =>
-                  track("Social Click", {
-                    platform: "LinkedIn",
-                    location: "Footer",
-                  })
-                }
+                // onClick={() =>
+                //   track("Social Click", {
+                //     platform: "LinkedIn",
+                //     location: "Footer",
+                //   })
+                // }
               >
                 <svg
                   width="20"

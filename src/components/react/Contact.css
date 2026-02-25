@@ -11,7 +11,7 @@
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--text-primary);
   margin-bottom: 1rem;
-  text-shadow: var(--headline-glow);
+  /* text-shadow: var(--headline-glow); */
   line-height: 1.1;
 }
 
