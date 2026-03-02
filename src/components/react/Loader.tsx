@@ -3,6 +3,41 @@ import "./Loader.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+const LOADER_COOKIE_NAME = "dakota-perry-loader-seen";
+const LOADER_STORAGE_KEY = "dakota-perry-loader-seen";
+const LOADER_COOKIE_TTL_SECONDS = 60 * 60 * 24 * 7;
+
+const hasSeenLoader = () => {
+  try {
+    const cookieString = document.cookie;
+    const hasCookie = cookieString
+      .split(";")
+      .map((cookie) => cookie.trim())
+      .some((cookie) => cookie.startsWith(`${LOADER_COOKIE_NAME}=`));
+    if (hasCookie) return true;
+  } catch {
+    // Ignore cookie-read errors.
+  }
+
+  try {
+    return window.localStorage.getItem(LOADER_STORAGE_KEY) === "true";
+  } catch {
+    // Ignore localStorage errors.
+    return false;
+  }
+};
+
+const setLoaderCookie = () => {
+  const expiry = new Date(
+    Date.now() + LOADER_COOKIE_TTL_SECONDS * 1000,
+  ).toUTCString();
+  document.cookie = `${LOADER_COOKIE_NAME}=true; expires=${expiry}; path=/`;
+};
+
+const setLoaderStorage = () => {
+  window.localStorage.setItem(LOADER_STORAGE_KEY, "true");
+};
+
 const letterVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: (i: number) => ({
@@ -17,10 +52,18 @@ const letterVariants = {
 };
 
 export default function Loader() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(!hasSeenLoader());
   const name = "DAKOTA PERRY";
 
   useEffect(() => {
+    if (!visible) return;
+
+    try {
+      setLoaderCookie();
+      setLoaderStorage();
+    } catch {
+      // Ignore storage errors.
+    }
     const timer = window.setTimeout(() => setVisible(false), 2000);
     return () => window.clearTimeout(timer);
   }, []);
