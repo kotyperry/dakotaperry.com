@@ -52,11 +52,19 @@ const letterVariants = {
 };
 
 export default function Loader() {
-  const [visible, setVisible] = useState(!hasSeenLoader());
+  const [hasChecked, setHasChecked] = useState(false);
+  const [visible, setVisible] = useState(false);
   const name = "DAKOTA PERRY";
 
   useEffect(() => {
-    if (!visible) return;
+    const alreadySeen = hasSeenLoader();
+    setHasChecked(true);
+
+    if (alreadySeen) {
+      return;
+    }
+
+    setVisible(true);
 
     try {
       setLoaderCookie();
@@ -64,71 +72,72 @@ export default function Loader() {
     } catch {
       // Ignore storage errors.
     }
+
     const timer = window.setTimeout(() => setVisible(false), 2000);
     return () => window.clearTimeout(timer);
   }, []);
 
+  if (!hasChecked || !visible) return null;
+
   return (
     <AnimatePresence>
-      {visible && (
-        <motion.div
-          className="loader"
-          exit={{
-            opacity: 0,
-            scale: 1.05,
-          }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="loader-content">
-            <motion.div
-              className="loader-text"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="loader-name">
-                {name.split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    custom={i}
-                    variants={letterVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="loader-char"
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-              </span>
-              <motion.div
-                className="loader-bar"
-                initial={{ scaleX: 0, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 1 }}
-                transition={{
-                  duration: 1.2,
-                  delay: 0.6,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              />
-              <motion.span
-                className="loader-subtitle"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.4 }}
-              >
-                AI Engineer
-              </motion.span>
-            </motion.div>
-          </div>
-
+      <motion.div
+        className="loader"
+        exit={{
+          opacity: 0,
+          scale: 1.05,
+        }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="loader-content">
           <motion.div
-            className="loader-bg-effect"
+            className="loader-text"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          />
-        </motion.div>
-      )}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="loader-name">
+              {name.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="loader-char"
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </span>
+            <motion.div
+              className="loader-bar"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{
+                duration: 1.2,
+                delay: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            />
+            <motion.span
+              className="loader-subtitle"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.4 }}
+            >
+              AI Engineer
+            </motion.span>
+          </motion.div>
+        </div>
+
+        <motion.div
+          className="loader-bg-effect"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+      </motion.div>
     </AnimatePresence>
   );
 }
