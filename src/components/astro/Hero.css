@@ -66,9 +66,9 @@
 .label-dot {
   width: 6px;
   height: 6px;
-  background: var(--accent-orange);
+  background: var(--accent-lime);
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--accent-orange-glow);
+  box-shadow: 0 0 8px var(--accent-lime-glow);
 }
 
 .hero-headline {
@@ -214,7 +214,7 @@
   padding: 1rem 1.75rem;
   position: relative;
   transition: all var(--transition-medium);
-  border: 1px solid var(--accent-orange);
+  border: 1px solid var(--accent-lime);
   background: transparent;
 }
 
@@ -229,7 +229,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--accent-orange);
+  background: var(--accent-lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-medium);

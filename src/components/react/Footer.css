@@ -184,7 +184,7 @@
   top: 50%;
   width: 0;
   height: 1px;
-  background: var(--accent-orange);
+  background: var(--accent-lime);
   transition: width var(--transition-medium);
   transform: translateY(-50%);
 }
@@ -194,7 +194,7 @@
 }
 
 .footer-link:hover {
-  color: var(--accent-orange);
+  color: var(--accent-lime);
 }
 
 .footer-icon-link {
@@ -211,8 +211,8 @@
 .footer-icon-link:hover {
   padding-left: 0;
   background: transparent;
-  color: var(--accent-orange);
-  border-color: var(--accent-orange);
+  color: var(--accent-lime);
+  border-color: var(--accent-lime);
   transform: translateY(-2px);
 }
 
