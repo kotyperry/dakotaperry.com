@@ -38,7 +38,7 @@ Layout shell lives in `src/layouts/Layout.astro`.
 
 CSS variables are defined in `src/styles/global.css`:
 - Dark theme (default) and light theme via `[data-theme="light"]`
-- Orange accent color: `--accent-orange`
+- Lime accent color: `--accent-lime`
 - Premium easing curves: `--ease-out-expo`, `--ease-elastic`, etc.
 - Each component has co-located CSS files
 

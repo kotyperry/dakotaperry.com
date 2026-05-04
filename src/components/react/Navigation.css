@@ -82,8 +82,8 @@
 }
 
 .nav-status:hover {
-  color: var(--accent-orange);
-  border-color: var(--accent-orange);
+  color: var(--accent-lime);
+  border-color: var(--accent-lime);
   transform: translateY(-2px);
 }
 
