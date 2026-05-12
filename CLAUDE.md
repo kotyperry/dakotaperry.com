@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build & Development Commands
 
 ```bash
-npm run dev       # Start Astro dev server (http://localhost:4321)
-npm run build     # Astro production build
-npm run lint      # Run ESLint
-npm run preview   # Preview production build locally
+bun run dev       # Start Astro dev server (http://localhost:4321)
+bun run build     # Astro production build
+bun run lint      # Run ESLint
+bun run preview   # Preview production build locally
 ```
 
 ## Architecture Overview

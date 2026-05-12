@@ -22,16 +22,15 @@ A static-first portfolio built with Astro and React islands.
 
 ### Prerequisites
 
-- Node.js 18+
-- npm
+- [Bun](https://bun.com/) 1.0+
 
 ### Installation
 
 ```bash
-npm install
-npm run dev
-npm run build
-npm run preview
+bun install
+bun run dev
+bun run build
+bun run preview
 ```
 
 ## Project Structure
@@ -53,7 +52,7 @@ src/
 Build and deploy `dist/` to any static host.
 
 ```bash
-npm run build
+bun run build
 ```
 
 ## License
