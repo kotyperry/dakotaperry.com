@@ -1,0 +1,4 @@
+[install]
+# Reject packages whose latest release is newer than 5 days, as a guard
+# against compromised package versions being pulled before they're caught.
+minimumReleaseAge = 432000
