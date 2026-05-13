@@ -90,20 +90,20 @@
 .status-dot {
   width: 6px;
   height: 6px;
-  background: #4ade80;
+  background: var(--accent-lime);
   border-radius: 50%;
   animation: statusPulse 2s ease infinite;
-  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+  box-shadow: 0 0 0 0 rgba(137, 243, 54, 0.4);
 }
 
 @keyframes statusPulse {
-  0%, 100% { 
+  0%, 100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 0 0 rgba(137, 243, 54, 0.4);
   }
-  50% { 
+  50% {
     opacity: 0.8;
-    box-shadow: 0 0 0 4px rgba(74, 222, 128, 0);
+    box-shadow: 0 0 0 4px rgba(137, 243, 54, 0);
   }
 }
 
