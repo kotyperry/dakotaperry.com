@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import './Contact.css'
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -13,7 +13,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -30,7 +30,6 @@ export default function Contact() {
     name: '',
     email: '',
     company: '',
-    budget: '',
     message: ''
   })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
@@ -53,7 +52,7 @@ export default function Contact() {
       
       if (response.ok) {
         setStatus('sent')
-        setFormData({ name: '', email: '', company: '', budget: '', message: '' })
+        setFormData({ name: '', email: '', company: '', message: '' })
       } else {
         setStatus('error')
       }
@@ -72,9 +71,9 @@ export default function Contact() {
     >
       <div className="contact-header">
         <span className="section-label">Contact</span>
-        <h2 className="contact-title">Ready to transform your business?</h2>
+        <h2 className="contact-title">Like what you see?</h2>
         <p className="contact-subtitle">
-          Let's discuss how AI and automation can create efficiency in your organization. Fill out the form and I'll get back to you within 24 hours.
+          Whether it's a project, a role, or just talking shop about a build — drop me a line and I'll get back to you.
         </p>
       </div>
 
@@ -134,32 +133,13 @@ export default function Contact() {
             />
             <span className="input-highlight" />
           </div>
-          <div className={`form-group ${focusedField === 'budget' ? 'focused' : ''}`}>
-            <label htmlFor="budget">Budget</label>
-            <select
-              id="budget"
-              name="budget"
-              value={formData.budget}
-              onChange={handleChange}
-              onFocus={() => setFocusedField('budget')}
-              onBlur={() => setFocusedField(null)}
-            >
-              <option value="">Select budget range</option>
-              <option value="<5k">Less than $5,000</option>
-              <option value="5k-10k">$5,000 - $10,000</option>
-              <option value="10k-25k">$10,000 - $25,000</option>
-              <option value="25k-50k">$25,000 - $50,000</option>
-              <option value="50k+">$50,000+</option>
-            </select>
-            <span className="input-highlight" />
-          </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className={`form-group ${focusedField === 'message' ? 'focused' : ''}`}
           variants={itemVariants}
         >
-          <label htmlFor="message">How can I help? *</label>
+          <label htmlFor="message">Message *</label>
           <textarea
             id="message"
             name="message"
@@ -169,7 +149,7 @@ export default function Contact() {
             onBlur={() => setFocusedField(null)}
             required
             rows={5}
-            placeholder="Tell me about your business challenges, goals, and how AI could help you operate more efficiently..."
+            placeholder="Tell me about your project, the role you're hiring for, or what you'd like to build..."
           />
           <span className="input-highlight" />
         </motion.div>

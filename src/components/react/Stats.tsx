@@ -1,16 +1,12 @@
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, type Variants } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import './Stats.css'
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Projects Delivered' },
+  { value: 20, suffix: '+', label: 'Projects Shipped' },
   { value: 5, suffix: '+', label: 'Years Experience' },
-  { value: 30, suffix: '+', label: 'Happy Clients' },
-  { value: 99, suffix: '%', label: 'Satisfaction Rate' },
-  { value: 2500, suffix: '+', label: 'Github Commits' },
-  { value: 3000, suffix: '+', label: 'Coffee Cups' },
-  { value: 20, suffix: '+', label: 'Open Source' },
-  { value: 100, suffix: 'K+', label: 'Lines of Code' },
+  { value: 10, suffix: '+', label: 'Brands Served' },
+  { value: 4, suffix: '', label: 'Platforms Shipped' },
 ]
 
 function Counter({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
@@ -44,7 +40,7 @@ function Counter({ value, suffix, inView }: { value: number; suffix: string; inV
   return <span>{count}{suffix}</span>
 }
 
-const statVariants = {
+const statVariants: Variants = {
   hidden: { opacity: 0, y: 20, scale: 0.95 },
   visible: (i: number) => ({
     opacity: 1,

@@ -1,6 +1,6 @@
 import "./Menu.css";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useEffect } from "react";
 
 const GithubIcon = () => (
@@ -26,7 +26,7 @@ const links = [
   { label: "Contact", href: "contact", num: "04" },
 ];
 
-const menuVariants = {
+const menuVariants: Variants = {
   closed: {
     scaleY: 0,
     originY: 0,
@@ -53,7 +53,7 @@ const menuVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   closed: {
     opacity: 0,
     x: -20,

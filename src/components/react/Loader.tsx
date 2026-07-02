@@ -1,6 +1,6 @@
 import "./Loader.css";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const LOADER_COOKIE_NAME = "dakota-perry-loader-seen";
@@ -38,7 +38,7 @@ const setLoaderStorage = () => {
   window.localStorage.setItem(LOADER_STORAGE_KEY, "true");
 };
 
-const letterVariants = {
+const letterVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: (i: number) => ({
     y: 0,
