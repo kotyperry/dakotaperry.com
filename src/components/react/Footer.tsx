@@ -8,7 +8,7 @@ import {
   type MouseEvent,
 } from "react";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, type Variants } from "framer-motion";
 
 // const track = (event: string, data: Record<string, string>) => {
 //   import("../../openpanel")
@@ -16,7 +16,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 //     .catch(() => {});
 // };
 
-const linkVariants = {
+const linkVariants: Variants = {
   hidden: { opacity: 0, x: -10 },
   visible: (i: number) => ({
     opacity: 1,
@@ -258,7 +258,7 @@ export default function Footer() {
             className="footer-headline"
             style={{ skewX: smoothSkew, x: smoothX }}
           >
-            LETS WORK
+            SAY HELLO
           </motion.h2>
         </motion.div>
       </div>
