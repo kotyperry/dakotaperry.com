@@ -55,7 +55,20 @@ export const projects: Project[] = [
       "Realtime sync across every client via Convex, with Better Auth for organization-level access",
       "Background media ingest and processing pipeline on Trigger.dev with Cloudflare R2 storage",
     ],
-    media: [],
+    media: [
+      {
+        type: "image",
+        src: "/images/projects/dam-library.svg",
+        alt: "Digital Asset Manager library view with AI-tagged asset grid",
+        caption: "The library view — search, filters, and an AI-tagged asset grid syncing in realtime.",
+      },
+      {
+        type: "image",
+        src: "/images/projects/dam-asset-detail.svg",
+        alt: "Asset detail view showing AI enrichment panel and Adobe hand-off",
+        caption: "Asset detail with the AI enrichment panel and one-click hand-off into Adobe apps.",
+      },
+    ],
   },
   {
     id: "alberta-boot-builder",
@@ -87,7 +100,20 @@ export const projects: Project[] = [
       "Self-serve admin for materials, pricing, and option-compatibility rules using Shopify Polaris",
       "CSV-driven catalog parity tooling to keep configurator options in sync with the workshop's offerings",
     ],
-    media: [],
+    media: [
+      {
+        type: "image",
+        src: "/images/projects/boot-builder-materials.png",
+        alt: "Boot Builder material selection step with an annotated boot showing shaft, heel, vamp, and pull tab",
+        caption: "Material selection in the live configurator — every part of the boot is customizable.",
+      },
+      {
+        type: "image",
+        src: "/images/projects/boot-builder-selection.jpg",
+        alt: "Hide and leather selection step offering standard and exotic leathers",
+        caption: "Choosing between standard and exotic hides, step 3 of the 23-step build flow.",
+      },
+    ],
   },
   {
     id: "analytics-dashboards",
@@ -119,7 +145,20 @@ export const projects: Project[] = [
       "Interactive visualizations with Recharts and d3-geo, exportable to client-ready PDFs",
       "Typed end to end with Drizzle ORM, Biome, and Vitest across the stack",
     ],
-    media: [],
+    media: [
+      {
+        type: "image",
+        src: "/images/projects/analytics-dashboard.png",
+        alt: "Campaign performance dashboard with spend, clicks, and conversion stat tiles",
+        caption: "A client dashboard — period-over-period stat tiles, PDF export, and the AI assistant.",
+      },
+      {
+        type: "image",
+        src: "/images/projects/analytics-charts.png",
+        alt: "Spend and conversions trend chart with a campaign performance table",
+        caption: "Trend charts and sortable campaign tables, synced from the warehouse.",
+      },
+    ],
   },
   {
     id: "scanline",
@@ -148,7 +187,20 @@ export const projects: Project[] = [
       "Design studio with gradients, dot styles, logo knockout, printable frames, and reusable templates",
       "Custom short-link domains with in-app verification, plus a public API with batch creation",
     ],
-    media: [],
+    media: [
+      {
+        type: "image",
+        src: "/images/projects/scanline-studio.png",
+        alt: "Scanline design studio with module styles, colors, and live QR preview",
+        caption: "The design studio — module styles, corner shapes, colors, and print-ready exports.",
+      },
+      {
+        type: "image",
+        src: "/images/projects/scanline-new-code.png",
+        alt: "Scanline new-code screen listing the supported QR content types",
+        caption: "Creating a new code — websites, vCards, WiFi, galleries, coupons, and more.",
+      },
+    ],
   },
   {
     id: "faunter",
@@ -177,66 +229,20 @@ export const projects: Project[] = [
       "Role-based access — admins manage the library, members sync automatically",
       "Google Fonts and Adobe Fonts integration for browsing and adding fonts in-app",
     ],
-    media: [],
-  },
-  {
-    id: "selene",
-    title: "Selene Storefronts",
-    category: "E-commerce",
-    description:
-      "Headless WooCommerce storefronts with Three.js product experiences and shared Railway infrastructure.",
-    fullDescription:
-      "A monorepo powering two fully isolated e-commerce storefronts — a production peptides store and a luxury skincare sister site — each a self-contained Vite + React app with its own build and tooling. The production storefront layers Three.js product experiences and transactional emails over a headless WordPress/WooCommerce backend. Both sites deploy to Railway as four-service stacks (web, edge, WordPress, database) built from shared Docker images, so infrastructure is written once and reused across brands.",
-    tech: [
-      "React",
-      "Vite",
-      "Three.js",
-      "WordPress",
-      "WooCommerce",
-      "Docker",
-      "Railway",
+    media: [
+      {
+        type: "image",
+        src: "/images/projects/faunter-library.svg",
+        alt: "Faunter desktop app showing the synced team font library",
+        caption: "The team library — every font previewed, versioned, and synced to each machine.",
+      },
+      {
+        type: "image",
+        src: "/images/projects/faunter-team.svg",
+        alt: "Faunter team view showing per-member sync status",
+        caption: "Team sync status — admins see exactly which machines are up to date.",
+      },
     ],
-    year: "2026",
-    color: "#101c2e",
-    role: "Lead Developer",
-    duration: "Ongoing",
-    highlights: [
-      "Headless WooCommerce architecture with a static-catalog fallback mode for resilience",
-      "Interactive Three.js product visuals on the production storefront",
-      "Shared Docker/Railway infrastructure — two isolated four-service stacks from the same images",
-      "Fully isolated apps in one monorepo: separate dependencies, builds, and tooling per brand",
-    ],
-    media: [],
-  },
-  {
-    id: "dometic-kiosk",
-    title: "Dometic Water Heater Kiosk",
-    category: "Interactive Kiosk",
-    description:
-      "BrightSign retail kiosk experience showcasing Dometic's water heater product line.",
-    fullDescription:
-      "An interactive product showcase built for BrightSign kiosk hardware at a fixed 1920×1080 resolution, letting shoppers explore and compare Dometic's water heater lineup on the retail floor. Built as a Vite + React 19 app with a slide-based navigation system, persistent header, and Recharts-powered specification comparisons — designed for touch, always-on operation, and unattended reliability.",
-    tech: [
-      "React 19",
-      "TypeScript",
-      "Vite",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Recharts",
-      "BrightSign",
-    ],
-    year: "2025",
-    color: "#0d1f2d",
-    role: "Lead Developer",
-    duration: "3 months",
-    client: "Dometic",
-    highlights: [
-      "Touch-first slide navigation system tuned for always-on retail kiosk hardware",
-      "Product comparison screens with Recharts specification visualizations",
-      "Fixed-resolution 1920×1080 layout engineered for BrightSign players",
-      "Sister kiosk build shipped for the FreshJet product line on the same foundation",
-    ],
-    media: [],
   },
   {
     id: "idea-ranch",
@@ -267,6 +273,19 @@ export const projects: Project[] = [
       "Branded onboarding app for new hires with uploads and Resend email automation",
       "Runs on Bun end to end, from local development through production builds",
     ],
-    media: [],
+    media: [
+      {
+        type: "image",
+        src: "/images/projects/idea-ranch-home.jpg",
+        alt: "Idea Ranch homepage with full-bleed brand film",
+        caption: "The live homepage — full-bleed brand film, fast and fully content-managed.",
+      },
+      {
+        type: "image",
+        src: "/images/projects/idea-ranch-work.jpg",
+        alt: "Idea Ranch work section showing the Carhartt case study",
+        caption: "Case-study tiles on the live site, all managed through Payload CMS.",
+      },
+    ],
   },
 ];

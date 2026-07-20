@@ -18,10 +18,24 @@ import { projects } from "../../data/projects";
             data-animate-delay={`${0.06 + index * 0.06}s`}
           >
             <div class="project-image" style={`background:${project.color}`}>
-              <div class="project-placeholder">
-                <span class="placeholder-num">{String(index + 1).padStart(2, "0")}</span>
-                <span class="placeholder-text">View Project</span>
-              </div>
+              {
+                project.media[0]?.type === "image" ? (
+                  <img
+                    class="project-thumbnail"
+                    src={project.media[0].src}
+                    alt={project.media[0].alt || project.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="750"
+                  />
+                ) : (
+                  <div class="project-placeholder">
+                    <span class="placeholder-num">{String(index + 1).padStart(2, "0")}</span>
+                    <span class="placeholder-text">View Project</span>
+                  </div>
+                )
+              }
               <div class="project-image-overlay" />
             </div>
 
