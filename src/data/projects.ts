@@ -57,10 +57,10 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "image",
-        src: "/images/projects/dam-library.svg",
-        alt: "Digital Asset Manager library view with AI-tagged asset grid",
-        caption: "The library view — search, filters, and an AI-tagged asset grid syncing in realtime.",
+        type: "video",
+        src: "/videos/projects/dam-promo.mp4",
+        alt: "Digital Asset Manager product walkthrough",
+        caption: "A walkthrough of the Digital Asset Manager in action.",
       },
       {
         type: "image",

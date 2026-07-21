@@ -135,7 +135,16 @@ const getSizes = (src: string) => {
                 </div>
               ) : (
                 <div class="media-video-wrapper">
-                  <video src={item.src} controls playsinline preload="metadata">
+                  <video
+                    src={item.src}
+                    aria-label={item.alt || `${project.title} - Video ${index + 1}`}
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    controls
+                    preload="metadata"
+                  >
                     Your browser does not support the video tag.
                   </video>
                 </div>

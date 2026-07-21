@@ -29,6 +29,16 @@ import { projects } from "../../data/projects";
                     width="1200"
                     height="750"
                   />
+                ) : project.media[0]?.type === "video" ? (
+                  <video
+                    class="project-thumbnail"
+                    src={project.media[0].src}
+                    aria-label={project.media[0].alt || project.title}
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                  />
                 ) : (
                   <div class="project-placeholder">
                     <span class="placeholder-num">{String(index + 1).padStart(2, "0")}</span>
@@ -81,3 +91,21 @@ import { projects } from "../../data/projects";
     }
   </div>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".project-card").forEach((card) => {
+    const video = card.querySelector<HTMLVideoElement>("video.project-thumbnail");
+    if (!video) return;
+
+    const playPreview = () => void video.play();
+    const resetPreview = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    card.addEventListener("pointerenter", playPreview);
+    card.addEventListener("pointerleave", resetPreview);
+    card.addEventListener("focusin", playPreview);
+    card.addEventListener("focusout", resetPreview);
+  });
+</script>
