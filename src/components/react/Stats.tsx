@@ -3,10 +3,10 @@ import { useRef, useState, useEffect } from 'react'
 import './Stats.css'
 
 const stats = [
-  { value: 20, suffix: '+', label: 'Projects Shipped' },
-  { value: 5, suffix: '+', label: 'Years Experience' },
-  { value: 10, suffix: '+', label: 'Brands Served' },
-  { value: 4, suffix: '', label: 'Platforms Shipped' },
+  { value: 50, suffix: '+', label: 'Projects Shipped' },
+  { value: 12, suffix: '+', label: 'Years Experience' },
+  { value: 40, suffix: '+', label: 'Brands Served' },
+  { value: 10, suffix: '+', label: 'Platforms Shipped' },
 ]
 
 function Counter({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
