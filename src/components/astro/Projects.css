@@ -60,7 +60,7 @@
 }
 
 .project-image {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,6 +77,11 @@
   object-fit: cover;
   object-position: top left;
   transition: transform var(--transition-medium);
+}
+
+.project-image--video .project-thumbnail {
+  object-fit: contain;
+  object-position: center;
 }
 
 .project-card:hover .project-thumbnail {
