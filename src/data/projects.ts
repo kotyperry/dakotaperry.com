@@ -26,7 +26,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "digital-asset-manager",
-    title: "Digital Asset Manager",
+    title: "Foundry",
     category: "Platform",
     description:
       "AI-powered digital asset management platform spanning web, desktop, and Adobe Creative Cloud.",
@@ -101,10 +101,11 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "image",
-        src: "/images/projects/flux-buckets.svg",
-        alt: "Flux buckets and overview screens showing envelope budgets and synced account balances",
-        caption: "Buckets and overview — every dollar assigned, with balances synced from connected banks.",
+        type: "video",
+        src: "/videos/projects/flux-promo.mp4#t=0.5",
+        alt: "Flux mobile budgeting app product demo",
+        caption: "Flux in action — organize every dollar, track spending, and stay on plan.",
+        aspectRatio: "full-width",
       },
       {
         type: "image",
@@ -230,10 +231,11 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "image",
-        src: "/images/projects/faunter-library.svg",
-        alt: "Faunter desktop app showing the synced team font library",
-        caption: "The team library — every font previewed, versioned, and synced to each machine.",
+        type: "video",
+        src: "/videos/projects/faunter-promo.mp4#t=0.5",
+        alt: "Faunter product walkthrough",
+        caption: "A walkthrough of Faunter in action.",
+        aspectRatio: "full-width",
       },
       {
         type: "image",
