@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <rect width="1200" height="750" fill="#101c26"/>
+  <!-- Phone 1: Trends -->
+  <g>
+    <rect x="270" y="55" width="300" height="640" rx="36" fill="#16242f"/>
+    <rect x="270" y="55" width="300" height="640" rx="36" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"/>
+    <rect x="385" y="71" width="70" height="18" rx="9" fill="#0b141c"/>
+    <text x="302" y="132" font-size="20" fill="#ffffff" opacity="0.92" font-weight="700" letter-spacing="0.04em">Trends</text>
+    <rect x="298" y="152" width="118" height="30" rx="15" fill="#89f336" opacity="0.9"/>
+    <text x="357" y="171" font-size="11" fill="#0b141c" font-weight="700" text-anchor="middle">6 months</text>
+    <rect x="424" y="152" width="118" height="30" rx="15" fill="#1d2d3a"/>
+    <text x="483" y="171" font-size="11" fill="#ffffff" opacity="0.5" font-weight="700" text-anchor="middle">Year</text>
+
+    <rect x="298" y="202" width="244" height="180" rx="14" fill="#1d2d3a"/>
+    <text x="316" y="230" font-size="11" fill="#ffffff" opacity="0.4" letter-spacing="0.08em">SPENDING BY MONTH</text>
+    <rect x="322" y="290" width="26" height="66" rx="4" fill="#89f336" opacity="0.35"/>
+    <rect x="358" y="272" width="26" height="84" rx="4" fill="#89f336" opacity="0.45"/>
+    <rect x="394" y="300" width="26" height="56" rx="4" fill="#89f336" opacity="0.35"/>
+    <rect x="430" y="252" width="26" height="104" rx="4" fill="#89f336" opacity="0.55"/>
+    <rect x="466" y="282" width="26" height="74" rx="4" fill="#89f336" opacity="0.45"/>
+    <rect x="502" y="244" width="26" height="112" rx="4" fill="#89f336" opacity="0.95"/>
+    <text x="335" y="372" font-size="9" fill="#ffffff" opacity="0.35" text-anchor="middle">F</text>
+    <text x="371" y="372" font-size="9" fill="#ffffff" opacity="0.35" text-anchor="middle">M</text>
+    <text x="407" y="372" font-size="9" fill="#ffffff" opacity="0.35" text-anchor="middle">A</text>
+    <text x="443" y="372" font-size="9" fill="#ffffff" opacity="0.35" text-anchor="middle">M</text>
+    <text x="479" y="372" font-size="9" fill="#ffffff" opacity="0.35" text-anchor="middle">J</text>
+    <text x="515" y="372" font-size="9" fill="#ffffff" opacity="0.35" text-anchor="middle">J</text>
+
+    <text x="302" y="424" font-size="12" fill="#ffffff" opacity="0.5" font-weight="700" letter-spacing="0.08em">TOP CATEGORIES</text>
+    <text x="302" y="458" font-size="12" fill="#ffffff" opacity="0.85">Groceries</text>
+    <text x="542" y="458" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">$482</text>
+    <rect x="302" y="468" width="240" height="6" rx="3" fill="#0b141c"/>
+    <rect x="302" y="468" width="240" height="6" rx="3" fill="#89f336" opacity="0.9"/>
+    <text x="302" y="504" font-size="12" fill="#ffffff" opacity="0.85">Rent</text>
+    <text x="542" y="504" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">$412</text>
+    <rect x="302" y="514" width="240" height="6" rx="3" fill="#0b141c"/>
+    <rect x="302" y="514" width="205" height="6" rx="3" fill="#89f336" opacity="0.6"/>
+    <text x="302" y="550" font-size="12" fill="#ffffff" opacity="0.85">Dining Out</text>
+    <text x="542" y="550" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">$209</text>
+    <rect x="302" y="560" width="240" height="6" rx="3" fill="#0b141c"/>
+    <rect x="302" y="560" width="104" height="6" rx="3" fill="#89f336" opacity="0.45"/>
+    <text x="302" y="596" font-size="12" fill="#ffffff" opacity="0.85">Subscriptions</text>
+    <text x="542" y="596" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">$86</text>
+    <rect x="302" y="606" width="240" height="6" rx="3" fill="#0b141c"/>
+    <rect x="302" y="606" width="43" height="6" rx="3" fill="#89f336" opacity="0.35"/>
+
+    <rect x="298" y="632" width="244" height="48" rx="24" fill="#0b141c"/>
+    <circle cx="340" cy="656" r="5" fill="#ffffff" opacity="0.25"/>
+    <circle cx="420" cy="656" r="5" fill="#89f336"/>
+    <circle cx="500" cy="656" r="5" fill="#ffffff" opacity="0.25"/>
+  </g>
+  <!-- Phone 2: Transactions -->
+  <g>
+    <rect x="630" y="55" width="300" height="640" rx="36" fill="#16242f"/>
+    <rect x="630" y="55" width="300" height="640" rx="36" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"/>
+    <rect x="745" y="71" width="70" height="18" rx="9" fill="#0b141c"/>
+    <text x="662" y="132" font-size="20" fill="#ffffff" opacity="0.92" font-weight="700" letter-spacing="0.04em">Transactions</text>
+    <rect x="658" y="152" width="244" height="32" rx="16" fill="#1d2d3a"/>
+    <circle cx="678" cy="168" r="5" fill="#89f336"/>
+    <text x="692" y="172" font-size="10" fill="#89f336" opacity="0.9" font-weight="700">Synced via Plaid · 2 min ago</text>
+
+    <text x="662" y="224" font-size="11" fill="#ffffff" opacity="0.4" letter-spacing="0.08em">TODAY</text>
+    <circle cx="680" cy="258" r="15" fill="#0b141c"/>
+    <text x="708" y="256" font-size="12" fill="#ffffff" opacity="0.85">Trader Joe's</text>
+    <text x="708" y="272" font-size="10" fill="#ffffff" opacity="0.35">Groceries · Chase ···4821</text>
+    <text x="898" y="262" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">−$46.18</text>
+    <circle cx="680" cy="312" r="15" fill="#0b141c"/>
+    <text x="708" y="310" font-size="12" fill="#ffffff" opacity="0.85">Shell</text>
+    <text x="708" y="326" font-size="10" fill="#ffffff" opacity="0.35">Gas · Chase ···4821</text>
+    <text x="898" y="316" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">−$38.62</text>
+
+    <text x="662" y="378" font-size="11" fill="#ffffff" opacity="0.4" letter-spacing="0.08em">YESTERDAY</text>
+    <circle cx="680" cy="412" r="15" fill="#0b141c"/>
+    <text x="708" y="410" font-size="12" fill="#ffffff" opacity="0.85">Spotify</text>
+    <text x="708" y="426" font-size="10" fill="#ffffff" opacity="0.35">Subscriptions · Amex ···1006</text>
+    <text x="898" y="416" font-size="12" fill="#ffffff" opacity="0.85" text-anchor="end">−$11.99</text>
+    <circle cx="680" cy="466" r="15" fill="#0b141c"/>
+    <text x="708" y="464" font-size="12" fill="#ffffff" opacity="0.85">Paycheck</text>
+    <text x="708" y="480" font-size="10" fill="#ffffff" opacity="0.35">Income · Ally ···2210</text>
+    <text x="898" y="470" font-size="12" fill="#89f336" opacity="0.9" text-anchor="end">+$2,340.00</text>
+    <circle cx="680" cy="520" r="15" fill="#0b141c"/>
+    <text x="708" y="518" font-size="12" fill="#ffffff" opacity="0.85">Round-up</text>
+    <text x="708" y="534" font-size="10" fill="#ffffff" opacity="0.35">Auto-save · Savings bucket</text>
+    <text x="898" y="524" font-size="12" fill="#89f336" opacity="0.9" text-anchor="end">+$0.82</text>
+
+    <rect x="658" y="572" width="244" height="40" rx="20" fill="#1d2d3a"/>
+    <text x="780" y="597" font-size="11" fill="#ffffff" opacity="0.5" font-weight="700" text-anchor="middle">Load older transactions</text>
+
+    <rect x="658" y="632" width="244" height="48" rx="24" fill="#0b141c"/>
+    <circle cx="700" cy="656" r="5" fill="#ffffff" opacity="0.25"/>
+    <circle cx="780" cy="656" r="5" fill="#ffffff" opacity="0.25"/>
+    <circle cx="860" cy="656" r="5" fill="#89f336"/>
+  </g>
+</svg>
