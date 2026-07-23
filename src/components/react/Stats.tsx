@@ -6,7 +6,7 @@ const stats = [
   { value: 50, suffix: '+', label: 'Projects Shipped' },
   { value: 12, suffix: '+', label: 'Years Experience' },
   { value: 40, suffix: '+', label: 'Brands Served' },
-  { value: 10, suffix: '+', label: 'Platforms Shipped' },
+  { value: 10, suffix: '+', label: 'Platforms Used' },
 ]
 
 function Counter({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
