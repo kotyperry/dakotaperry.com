@@ -542,12 +542,10 @@
 /* Video Device Frame (laptop style) */
 .media-video-wrapper {
   position: relative;
-  display: flex;
-  justify-content: center;
-  overflow: visible;
+  overflow: hidden;
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
   border-radius: 12px;
-  padding: 12px;
+  padding: 36px 12px 12px;
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.05) inset;
@@ -555,9 +553,11 @@
 
 .media-video-wrapper::before {
   content: '';
-  display: block;
-  padding: 8px 12px;
-  margin-bottom: 8px;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 28px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .media-video-wrapper::after {
@@ -575,8 +575,8 @@
 
 .media-video-wrapper video {
   width: 100%;
+  max-width: 100%;
   height: auto;
-  margin-inline: auto;
   display: block;
   border-radius: 4px;
   object-position: center;

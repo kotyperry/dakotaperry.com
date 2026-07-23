@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     id: "digital-asset-manager",
     title: "Foundry",
-    category: "Platform",
+    category: "SaaS Product",
     description:
       "AI-powered digital asset management platform spanning web, desktop, and Adobe Creative Cloud.",
     fullDescription:
@@ -117,7 +117,7 @@ export const projects: Project[] = [
   },
   {
     id: "analytics-dashboards",
-    title: "Analytics Dashboards",
+    title: "Henry Media Dashboard",
     category: "Web Application",
     description:
       "Client-facing analytics platform with AI-assisted reporting on top of BigQuery.",
@@ -147,10 +147,10 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "image",
-        src: "/images/projects/analytics-dashboard.png",
-        alt: "Campaign performance dashboard with spend, clicks, and conversion stat tiles",
-        caption: "A client dashboard — period-over-period stat tiles, PDF export, and the AI assistant.",
+        type: "video",
+        src: "/videos/projects/henry-promo.mp4#t=0.5",
+        alt: "Henry product walkthrough",
+        caption: "A walkthrough of Henry in action.",
       },
       {
         type: "image",
