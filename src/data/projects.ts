@@ -276,10 +276,11 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        type: "image",
-        src: "/images/projects/idea-ranch-home.jpg",
-        alt: "Idea Ranch homepage with full-bleed brand film",
-        caption: "The live homepage — full-bleed brand film, fast and fully content-managed.",
+        type: "video",
+        src: "/videos/projects/idea-ranch-promo.mp4#t=0.5",
+        alt: "Idea Ranch 2.0 site walkthrough",
+        caption: "A walkthrough of the live Idea Ranch site.",
+        aspectRatio: "full-width",
       },
       {
         type: "image",
