@@ -1,6 +1,7 @@
 ---
 import "./ProjectDetailContent.css";
 import type { Project } from "../../data/projects";
+import ProjectGallery from "../react/ProjectGallery";
 
 interface Props {
   project: Project;
@@ -8,24 +9,22 @@ interface Props {
 
 const { project } = Astro.props;
 
-const getSrcSet = (src: string) => {
-  if (!/w=\d+/.test(src)) {
-    return undefined;
-  }
-
-  return `${src.replace(/w=\d+/, "w=400")} 400w, ${src.replace(/w=\d+/, "w=800")} 800w, ${src} 1200w`;
-};
-
-const getSizes = (src: string) => {
-  if (!/w=\d+/.test(src)) {
-    return undefined;
-  }
-
-  return "(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px";
-};
+const heroImage = project.media.find((item) => item.type === "image")?.src;
 ---
 
 <div id="hero" class="project-detail-hero" style={`background:${project.color}`} data-animate="fade">
+  {
+    heroImage && (
+      <div
+        class="hero-backdrop"
+        style={`background-image:url('${heroImage}')`}
+        aria-hidden="true"
+      />
+    )
+  }
+  <div class="hero-glow" aria-hidden="true" />
+  <div class="hero-grid" aria-hidden="true" />
+  <div class="hero-scrim" aria-hidden="true" />
   <div class="hero-content">
     <span class="hero-category" data-animate data-animate-delay="0.05s">
       {project.category}
@@ -36,8 +35,12 @@ const getSizes = (src: string) => {
     <p class="hero-description" data-animate data-animate-delay="0.15s">
       {project.description}
     </p>
+    <div class="hero-meta" data-animate data-animate-delay="0.2s">
+      <span>{project.year}</span>
+      <span class="hero-meta-divider" aria-hidden="true" />
+      <span>{project.role}</span>
+    </div>
   </div>
-  <div class="hero-gradient" />
 </div>
 
 <div id="info" class="project-info-bar" data-animate data-animate-delay="0.2s">
@@ -112,47 +115,11 @@ const getSizes = (src: string) => {
     project.media.length > 0 && (
       <section id="gallery" class="content-section media-section" data-animate>
         <h2 class="section-title">Project Gallery</h2>
-        <div class="media-gallery">
-          {project.media.map((item, index) => (
-            <div
-              class={`media-item ${item.aspectRatio || "landscape"}`}
-              data-animate
-              data-animate-delay={`${0.04 + index * 0.05}s`}
-            >
-              {item.type === "image" ? (
-                <div class="media-image-wrapper">
-                  <img
-                    src={item.src}
-                    srcset={getSrcSet(item.src)}
-                    sizes={getSizes(item.src)}
-                    alt={item.alt || `${project.title} - Image ${index + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height={item.aspectRatio === "portrait" ? "1600" : "750"}
-                  />
-                  <div class="media-overlay" />
-                </div>
-              ) : (
-                <div class="media-video-wrapper">
-                  <video
-                    src={item.src}
-                    aria-label={item.alt || `${project.title} - Video ${index + 1}`}
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    controls
-                    preload="metadata"
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              )}
-              {item.caption && <p class="media-caption">{item.caption}</p>}
-            </div>
-          ))}
-        </div>
+        <ProjectGallery
+          client:visible
+          media={project.media}
+          title={project.title}
+        />
       </section>
     )
   }
