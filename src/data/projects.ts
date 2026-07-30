@@ -49,6 +49,7 @@ export const projects: Project[] = [
     role: "Architect / Sole Developer",
     duration: "6+ months",
     client: "Idea Ranch",
+    liveUrl: "https://foundry.dakotaperry.com",
     highlights: [
       "Architected a monorepo covering web app, desktop shell, admin app, backend, and Adobe CC plugins",
       "Built AI auto-tagging and visual search using Google Cloud Vision, Gemini, and Hugging Face",

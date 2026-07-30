@@ -4,7 +4,6 @@ import Footer from "../../components/react/Footer";
 import Loader from "../../components/react/Loader";
 import NavigationIsland from "../../components/react/NavigationIsland";
 import Sidebar from "../../components/react/Sidebar";
-import UnderConstruction from "../../components/react/UnderConstruction";
 import { projects } from "../../data/projects";
 import Layout from "../../layouts/Layout.astro";
 
@@ -19,7 +18,6 @@ const { project } = Astro.props;
 ---
 
 <Layout title={`${project.title} | Dakota Perry`} description={project.description}>
-  <UnderConstruction client:load />
   <Loader client:load />
 
   <div class="app-wrapper">
